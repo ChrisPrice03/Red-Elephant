@@ -129,11 +129,12 @@ public class Player : MonoBehaviour
 
     //allows player to take damage
     void loseHp(int lose) {
-        curHp -= lose;
-        if (curHp <= 0) {
+        if (curHp - lose <= 0) {
+            curHp = 0;
             healthBar.setHealth(0);
         }
         else {
+            curHp -= lose;
             healthBar.setHealth(curHp);
         }
         if (this.checkDeath()) {
