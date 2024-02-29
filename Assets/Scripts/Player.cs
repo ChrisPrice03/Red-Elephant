@@ -6,23 +6,25 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     //adding features attached to a player
-    private int level = 0;
-    private int totalExp = 0;
-    private int xpToLevel = 20;
-    private int xpSinceLevel = 0;
-    private double levelXpMult = 2;
+    public int level = 0;
+    public int totalExp = 0;
+    public int xpToLevel = 20;
+    public int xpSinceLevel = 0;
+    public double levelXpMult = 2;
     public int maxHp = 100;
     public int curHp = 100;
 
     //adding GUI
     public HealthBar healthBar;
+    public ExpBar expBar;
 
     // Start is called before the first frame update
     void Start()
     {
-        curHp = maxHp;
         healthBar.setMaxHealth(maxHp);
         healthBar.setHealth(curHp);
+        expBar.setMaxXP(xpToLevel);
+        expBar.setXP(xpSinceLevel);
     }
 
     // Update is called once per frame
@@ -33,6 +35,9 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
             gainHp(20);
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow)) {
+            addXp(20);
         }
     }
 
@@ -81,13 +86,16 @@ public class Player : MonoBehaviour
     void levelUp() {
         level++;
         xpSinceLevel -= xpToLevel;
+        expBar.setXP(xpSinceLevel);
         xpToLevel = (int) (xpToLevel * levelXpMult);
+        expBar.setMaxXP(xpToLevel);
     }
 
     //gives xp tp a player
     void addXp(int count) {
         totalExp += count;
         xpSinceLevel += count;
+        expBar.setXP(xpSinceLevel);
         if (this.checkLevelStatus()) {
             this.displayLevelUp();
         }
