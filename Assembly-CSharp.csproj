@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Options\ResolutionOption.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Helpers\GraphicSettingHelperMethods.cs" />
+    <Compile Include="Assets\Scripts\CharInfoText.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Demo\Scripts\CameraController.cs" />
   </ItemGroup>
   <ItemGroup>

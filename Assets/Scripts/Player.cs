@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-//using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -18,9 +17,7 @@ public class Player : MonoBehaviour
     //adding GUI
     public HealthBar healthBar;
     public ExpBar expBar;
-
-    //text editors
-    //public TMP_TEXT infoText;
+    public CharInfoText charInfoText;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +26,7 @@ public class Player : MonoBehaviour
         healthBar.setHealth(curHp);
         expBar.setMaxXP(xpToLevel);
         expBar.setXP(xpSinceLevel);
-        //infoText.text = "this is a test";
+        charInfoText.updateText(getPlayerInfo());
     }
 
     // Update is called once per frame
@@ -44,6 +41,15 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) {
             addXp(20);
         }
+        charInfoText.updateText(getPlayerInfo());
+    }
+
+    //returning a string of player info to be displayed
+    string getPlayerInfo() {
+        return "Health: " + curHp + "/" + maxHp +
+                "\nLevel: " + level +
+                "\nLevel Progress: " + xpSinceLevel + "/" + xpToLevel +
+                "\nTotal Xp: " + totalExp;
     }
 
     //updates levelUp speed based on difficulty
