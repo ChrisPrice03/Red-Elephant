@@ -14,6 +14,13 @@ public class Player : MonoBehaviour
     public int maxHp = 100;
     public int curHp = 100;
 
+    //adding individual stat values
+    public int health = 0;
+    public int attack = 0;
+    public int defense = 0;
+    public int speed = 0;
+    public int intelligence = 0;
+
     //adding GUI
     public HealthBar healthBar;
     public ExpBar expBar;
@@ -49,7 +56,13 @@ public class Player : MonoBehaviour
         return "Health: " + curHp + "/" + maxHp +
                 "\nLevel: " + level +
                 "\nLevel Progress: " + xpSinceLevel + "/" + xpToLevel +
-                "\nTotal Xp: " + totalExp;
+                "\nTotal Xp: " + totalExp +
+                "\n\nAllocated Skill Points:" +
+                "\nHealth - " + health +
+                "\nAttack - " + attack +
+                "\nDefense - " + defense +
+                "\nSpeed - " + speed +
+                "\nIntelligence - " + intelligence;
     }
 
     //updates levelUp speed based on difficulty

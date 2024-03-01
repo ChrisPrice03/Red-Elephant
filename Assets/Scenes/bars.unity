@@ -675,9 +675,14 @@ MonoBehaviour:
   levelXpMult: 2
   maxHp: 100
   curHp: 100
+  health: 0
+  attack: 0
+  defense: 0
+  speed: 0
+  intelligence: 0
   healthBar: {fileID: 1787376907}
   expBar: {fileID: 1269265283}
-  infoText: {fileID: 929935405}
+  charInfoText: {fileID: 929935407}
 --- !u!4 &483085673
 Transform:
   m_ObjectHideFlags: 0
@@ -1199,18 +1204,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 929935403}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b32be47fd5ad65240ae76effc5f0966a, type: 3}
+  m_Script: {fileID: 11500000, guid: 69db76cd06676a94ab5ca5ee3e1067b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
-  totalExp: 0
-  xpToLevel: 20
-  xpSinceLevel: 0
-  levelXpMult: 2
-  maxHp: 100
-  curHp: 100
-  healthBar: {fileID: 0}
-  expBar: {fileID: 0}
   infoText: {fileID: 929935405}
 --- !u!1 &957016199
 GameObject:
