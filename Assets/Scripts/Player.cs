@@ -14,17 +14,19 @@ public class Player : MonoBehaviour
     public int maxHp = 100;
     public int curHp = 100;
 
-    //adding individual stat values
+    //adding individual stat values and spendable points
     public int health = 0;
     public int attack = 0;
     public int defense = 0;
     public int speed = 0;
     public int intelligence = 0;
+    int spendablePoints = 0;
 
     //adding GUI
     public HealthBar healthBar;
     public ExpBar expBar;
     public CharInfoText charInfoText;
+    public Button healthButton;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,7 @@ public class Player : MonoBehaviour
         expBar.setMaxXP(xpToLevel);
         expBar.setXP(xpSinceLevel);
         charInfoText.updateText(getPlayerInfo());
+        healthButton.onClick.AddListener(increaseHealthStat);
     }
 
     // Update is called once per frame
@@ -57,7 +60,7 @@ public class Player : MonoBehaviour
                 "\nLevel: " + level +
                 "\nLevel Progress: " + xpSinceLevel + "/" + xpToLevel +
                 "\nTotal Xp: " + totalExp +
-                "\n\nAllocated Skill Points:" +
+                "\n\nAllocated Skill Points: " + spendablePoints + " Spendable" +
                 "\nHealth - " + health +
                 "\nAttack - " + attack +
                 "\nDefense - " + defense +
@@ -108,6 +111,7 @@ public class Player : MonoBehaviour
 
     //levels up a player
     void levelUp() {
+        spendablePoints++;
         level++;
         xpSinceLevel -= xpToLevel;
         expBar.setXP(xpSinceLevel);
@@ -178,5 +182,32 @@ public class Player : MonoBehaviour
     void modifyMaxHp(int change) {
         maxHp += change;
         healthBar.setMaxHealth(maxHp);
+    }
+
+    //stat functions
+
+    //increases health stat
+    public void increaseHealthStat() {
+        health++;
+    }
+
+    //increases attack stat
+    public void increaseAttackStat() {
+        attack++;
+    }
+
+    //increases defense stat
+    public void increaseDefenseStat() {
+        defense++;
+    }
+
+    //increases speed stat
+    public void increaseSpeedStat() {
+        speed++;
+    }
+
+    //increases intelligence stat
+    public void increaseIngelligencestat() {
+        intelligence++;
     }
 }
