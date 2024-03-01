@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     public Button defenseButton;
     public Button speedButton;
     public Button intelligenceButton;
+    public Image levelNotif;
 
     // Start is called before the first frame update
     void Start()
@@ -119,6 +120,7 @@ public class Player : MonoBehaviour
 
     //levels up a player
     void levelUp() {
+        levelNotif.gameObject.SetActive(true);
         spendablePoints++;
         level++;
         xpSinceLevel -= xpToLevel;
