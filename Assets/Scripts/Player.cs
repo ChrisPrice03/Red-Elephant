@@ -27,6 +27,10 @@ public class Player : MonoBehaviour
     public ExpBar expBar;
     public CharInfoText charInfoText;
     public Button healthButton;
+    public Button attackButton;
+    public Button defenseButton;
+    public Button speedButton;
+    public Button intelligenceButton;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +41,10 @@ public class Player : MonoBehaviour
         expBar.setXP(xpSinceLevel);
         charInfoText.updateText(getPlayerInfo());
         healthButton.onClick.AddListener(increaseHealthStat);
+        attackButton.onClick.AddListener(increaseAttackStat);
+        defenseButton.onClick.AddListener(increaseDefenseStat);
+        speedButton.onClick.AddListener(increaseSpeedStat);
+        intelligenceButton.onClick.AddListener(increaseIntelligenceStat);
     }
 
     // Update is called once per frame
@@ -188,26 +196,42 @@ public class Player : MonoBehaviour
 
     //increases health stat
     public void increaseHealthStat() {
-        health++;
+        if (spendablePoints > 0) {
+            spendablePoints--;
+            health++;
+            modifyMaxHp((int) (0.2 * maxHp));
+        }
     }
 
     //increases attack stat
     public void increaseAttackStat() {
-        attack++;
+        if (spendablePoints > 0) {
+            spendablePoints--;
+            attack++;
+        }
     }
 
     //increases defense stat
     public void increaseDefenseStat() {
-        defense++;
+        if (spendablePoints > 0) {
+            spendablePoints--;
+            defense++;
+        }
     }
 
     //increases speed stat
     public void increaseSpeedStat() {
-        speed++;
+        if (spendablePoints > 0) {
+            spendablePoints--;
+            speed++;
+        }
     }
 
     //increases intelligence stat
-    public void increaseIngelligencestat() {
-        intelligence++;
+    public void increaseIntelligenceStat() {
+        if (spendablePoints > 0) {
+            spendablePoints--;
+            intelligence++;
+        }
     }
 }
