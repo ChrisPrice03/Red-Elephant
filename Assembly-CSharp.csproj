@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\CharacterUpdate.cs" />
     <Compile Include="Assets\Settings.cs" />
+    <Compile Include="Assets\MainMenu.cs" />
     <Compile Include="Assets\ButtonPressScript.cs" />
     <Compile Include="Assets\PauseScript.cs" />
     <Compile Include="Assets\Scripts\ExpBar.cs" />
