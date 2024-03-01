@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+//using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     public ExpBar expBar;
 
     //text editors
-    public TMP_TEXT infoText;
+    //public TMP_TEXT infoText;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
         healthBar.setHealth(curHp);
         expBar.setMaxXP(xpToLevel);
         expBar.setXP(xpSinceLevel);
-        infoText.text = "this is a test";
+        //infoText.text = "this is a test";
     }
 
     // Update is called once per frame
