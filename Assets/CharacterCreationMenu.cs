@@ -22,4 +22,5 @@ public class CharacterCreationMenu : MonoBehaviour
         PrefabUtility.SaveAsPrefabAsset(character, "Assets/Player.prefab");
         SceneManager.LoadScene(1);
     }
+
 }
