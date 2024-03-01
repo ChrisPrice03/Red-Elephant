@@ -3196,6 +3196,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1571974914}
+  - {fileID: 57872376}
   m_Father: {fileID: 1546085180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
@@ -6746,6 +6747,7 @@ MonoBehaviour:
   defenseButton: {fileID: 376718897}
   speedButton: {fileID: 1016707713}
   intelligenceButton: {fileID: 1592143943}
+  levelNotif: {fileID: 57872377}
 --- !u!1001 &4407966152020087525
 PrefabInstance:
   m_ObjectHideFlags: 0

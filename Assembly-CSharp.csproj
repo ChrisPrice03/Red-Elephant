@@ -65,6 +65,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Manager\GraphicMenuManager.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Core\Option.cs" />
+    <Compile Include="Assets\Difficulty.cs" />
+    <Compile Include="Assets\Scripts\DifficultySO.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Options\QualityLevelOption.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Core\KeyboardMouseInput.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Options\ScreenmodeOption.cs" />
@@ -78,10 +80,13 @@
     <Compile Include="Assets\PauseScript.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Core\SubOption.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Core\GraphicSettingDataContainer.cs" />
+    <Compile Include="Assets\Scripts\ReturnToPage.cs" />
+    <Compile Include="Assets\PasueMenu.cs" />
     <Compile Include="Assets\Scripts\ExpBar.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Options\ResolutionOption.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Helpers\GraphicSettingHelperMethods.cs" />
+    <Compile Include="Assets\Scripts\SelectionManager.cs" />
     <Compile Include="Assets\Scripts\CharInfoText.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Demo\Scripts\CameraController.cs" />
   </ItemGroup>
