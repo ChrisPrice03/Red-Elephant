@@ -7,8 +7,7 @@ public class PlayerMovement : MonoBehaviour
     
     //player body
     private Rigidbody2D player; 
-    public static bool isPaused = false;
-    bool m_SceneLoaded  = false;
+    
     // Start is called before the first frame update
     private void Start()
     {
@@ -19,26 +18,7 @@ public class PlayerMovement : MonoBehaviour
    
 
     // Change the newly loaded Scene to be the active Scene if it is loaded
-    public void Pause()
-    {
-        // Allow this other Button to be pressed when the other Button has been pressed (Scene 2 is loaded)
-        if (m_SceneLoaded == true)
-        {
-            // Set Scene2 as the active Scene
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName("PauseScreenScene"));
-
-            // Ouput the name of the active Scene
-            // See now that the name is updated
-            Debug.Log("Active Scene : " + SceneManager.GetActiveScene().name);
-        } else {
-            SceneManager.LoadScene("PauseScreenScene", LoadSceneMode.Additive);
-            m_SceneLoaded = true;
-        }
-    }
-
-    public void Resume() {
-        SceneManager.LoadScene("CharMoveTest");
-    }
+    
 
     // Update is called once per frame
     private void Update()
@@ -71,15 +51,7 @@ public class PlayerMovement : MonoBehaviour
             
         }
         
-        if (Input.GetButtonDown("Pause")) {
-            if (isPaused) {
-                Resume();
-                isPaused = false;
-            } else {
-                Pause();
-                isPaused = true;
-            }
-        }
+        
         
     }
 }
