@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    //adding attack point
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask creatureLayers;
+
     //adding features attached to a player
     public int level = 0;
     public int totalExp = 0;
@@ -59,6 +64,9 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.R)) {
             addXp(20);
+        }
+        if (Input.GetMouseButtonDown(0)) {
+            attackNearby();
         }
         charInfoText.updateText(getPlayerInfo());
     }
@@ -234,6 +242,17 @@ public class Player : MonoBehaviour
         if (spendablePoints > 0) {
             spendablePoints--;
             intelligence++;
+        }
+    }
+
+    //this command is run when the player chooses to attack
+    void attackNearby() {
+        //detecting hit enemies
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, creatureLayers);
+
+        //hitting the enemies
+        foreach(Collider2D enemy in hitEnemies) {
+            Debug.Log("We hit " + enemy.name);
         }
     }
 }
