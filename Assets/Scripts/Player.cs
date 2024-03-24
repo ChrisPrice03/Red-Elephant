@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     public double levelXpMult = 2;
     public int maxHp = 100;
     public int curHp = 100;
+    public int attackDamage = 10;
+    public float attackRate = 2f;
+    float nextAttackTime = 0f;
 
     //adding individual stat values and spendable points
     public int health = 0;
@@ -65,8 +68,11 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) {
             addXp(20);
         }
-        if (Input.GetMouseButtonDown(0)) {
-            attackNearby();
+        if (Time.time >= nextAttackTime) {
+            if (Input.GetMouseButtonDown(0)) {
+                attackNearby();
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
         }
         charInfoText.updateText(getPlayerInfo());
     }
@@ -202,6 +208,11 @@ public class Player : MonoBehaviour
         healthBar.setMaxHealth(maxHp);
     }
 
+    //allows player to change attackDamage
+        void modifyAttackDamage(int change) {
+            attackDamage += change;
+        }
+
     //stat functions
 
     //increases health stat
@@ -218,6 +229,7 @@ public class Player : MonoBehaviour
         if (spendablePoints > 0) {
             spendablePoints--;
             attack++;
+            modifyAttackDamage((int) (0.2 * maxHp));
         }
     }
 
@@ -252,7 +264,8 @@ public class Player : MonoBehaviour
 
         //hitting the enemies
         foreach(Collider2D enemy in hitEnemies) {
-            Debug.Log("We hit " + enemy.name);
+            enemy.GetComponent<Creature>().TakeDamage(attackDamage);
+            //Debug.Log("We hit " + enemy.name);
         }
     }
 }
