@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class Creature : MonoBehaviour
 {
-    //the player this creature is associated with
-    public Player player;
+    //the determining exp
+    public Transform center;
+    public float xpRange = 1f;
+    public LayerMask playerLayer;
 
     public int maxHealth = 100;
     public int currentHealth;
@@ -63,9 +65,15 @@ public class Creature : MonoBehaviour
 
     //kills creature
     void Die() {
+        //detecting nearby players
+        Collider2D[] nearbyPlayers = Physics2D.OverlapCircleAll(center.position, xpRange, playerLayer);
+        //adding xp
+        foreach(Collider2D player in nearbyPlayers) {
+                player.GetComponent<Player>().addXp(xpVal);
+        }
+
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
-        player.addXp(xpVal);
     }
 
     //randomly sets wander direction

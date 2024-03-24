@@ -80,14 +80,15 @@ public class Player : MonoBehaviour
     //returning a string of player info to be displayed
     string getPlayerInfo() {
         return "Health: " + curHp + "/" + maxHp +
+                "\nAttack Damage: " + attackDamage +
                 "\nLevel: " + level +
                 "\nLevel Progress: " + xpSinceLevel + "/" + xpToLevel +
                 "\nTotal Xp: " + totalExp +
                 "\n\nAllocated Skill Points: " + spendablePoints + " Spendable" +
-                "\nHealth - " + health +
-                "\nAttack - " + attack +
-                "\nDefense - " + defense +
-                "\nSpeed - " + speed +
+                "\nHealth - " + health + " (+" + (health * 20) + "%)" +
+                "\nAttack - " + attack + " (+" + (attack * 20) + "%)" +
+                "\nDefense - " + defense + " (+" + (defense * 20) + "%)" +
+                "\nSpeed - " + speed + " (+" + (speed * 20) + "%)" +
                 "\nIntelligence - " + intelligence;
     }
 
