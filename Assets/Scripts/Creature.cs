@@ -5,14 +5,18 @@ using UnityEngine.UI;
 
 public class Creature : MonoBehaviour
 {
+    //the player this creature is associated with
+    public Player player;
+
     public int maxHealth = 100;
-    int currentHealth;
+    public int currentHealth;
+    public int xpVal = 10;
 
     public HealthBar healthBar;
 
     //for creature wandering
     public float moveSpeed = 1f;
-    public float wanderInterval = 5f;
+    public float wanderInterval = 2f;
 
     private bool isMoving = true;
     private float timer;
@@ -61,6 +65,7 @@ public class Creature : MonoBehaviour
     void Die() {
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
+        player.addXp(xpVal);
     }
 
     //randomly sets wander direction

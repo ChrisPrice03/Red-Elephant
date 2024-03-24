@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     //adding attack point
     public Transform attackPoint;
-    public float attackRange = 0.5f;
+    public float attackRange = 0.75f;
     public LayerMask creatureLayers;
 
     //adding features attached to a player
@@ -144,7 +144,7 @@ public class Player : MonoBehaviour
     }
 
     //gives xp tp a player
-    void addXp(int count) {
+    public void addXp(int count) {
         totalExp += count;
         xpSinceLevel += count;
         expBar.setXP(xpSinceLevel);
@@ -229,7 +229,7 @@ public class Player : MonoBehaviour
         if (spendablePoints > 0) {
             spendablePoints--;
             attack++;
-            modifyAttackDamage((int) (0.2 * maxHp));
+            modifyAttackDamage((int) (0.2 * attackDamage));
         }
     }
 

@@ -578,7 +578,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bac81f79d6fa6544b48cbc1e501c3a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2122282790}
   maxHealth: 100
+  currentHealth: 0
+  xpVal: 10
   healthBar: {fileID: 575289563}
   moveSpeed: 1
   wanderInterval: 2
@@ -7347,7 +7350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 1789251466}
-  attackRange: 0.5
+  attackRange: 0.75
   creatureLayers:
     serializedVersion: 2
     m_Bits: 128
