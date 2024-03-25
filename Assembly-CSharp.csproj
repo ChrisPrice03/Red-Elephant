@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Helpers\GraphicSettingHelperMethods.cs" />
     <Compile Include="Assets\Scripts\SelectionManager.cs" />
     <Compile Include="Assets\Scripts\CharInfoText.cs" />
+    <Compile Include="Assets\Scripts\Creature.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Demo\Scripts\CameraController.cs" />
   </ItemGroup>
   <ItemGroup>
