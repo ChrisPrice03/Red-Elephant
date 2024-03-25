@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     //adding attack point
     public Transform attackPoint;
-    public float attackRange = 0.5f;
+    public float attackRange = 0.75f;
     public LayerMask creatureLayers;
 
     //adding features attached to a player
@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     public double levelXpMult = 2;
     public int maxHp = 100;
     public int curHp = 100;
+    public int attackDamage = 10;
+    public float attackRate = 2f;
+    float nextAttackTime = 0f;
 
     //adding individual stat values and spendable points
     public int health = 0;
@@ -65,8 +68,11 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) {
             addXp(20);
         }
-        if (Input.GetMouseButtonDown(0)) {
-            attackNearby();
+        if (Time.time >= nextAttackTime) {
+            if (Input.GetMouseButtonDown(0)) {
+                attackNearby();
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
         }
         charInfoText.updateText(getPlayerInfo());
     }
@@ -74,14 +80,15 @@ public class Player : MonoBehaviour
     //returning a string of player info to be displayed
     string getPlayerInfo() {
         return "Health: " + curHp + "/" + maxHp +
+                "\nAttack Damage: " + attackDamage +
                 "\nLevel: " + level +
                 "\nLevel Progress: " + xpSinceLevel + "/" + xpToLevel +
                 "\nTotal Xp: " + totalExp +
                 "\n\nAllocated Skill Points: " + spendablePoints + " Spendable" +
-                "\nHealth - " + health +
-                "\nAttack - " + attack +
-                "\nDefense - " + defense +
-                "\nSpeed - " + speed +
+                "\nHealth - " + health + " (+" + (health * 20) + "%)" +
+                "\nAttack - " + attack + " (+" + (attack * 20) + "%)" +
+                "\nDefense - " + defense + " (+" + (defense * 20) + "%)" +
+                "\nSpeed - " + speed + " (+" + (speed * 20) + "%)" +
                 "\nIntelligence - " + intelligence;
     }
 
@@ -138,7 +145,7 @@ public class Player : MonoBehaviour
     }
 
     //gives xp tp a player
-    void addXp(int count) {
+    public void addXp(int count) {
         totalExp += count;
         xpSinceLevel += count;
         expBar.setXP(xpSinceLevel);
@@ -202,6 +209,11 @@ public class Player : MonoBehaviour
         healthBar.setMaxHealth(maxHp);
     }
 
+    //allows player to change attackDamage
+        void modifyAttackDamage(int change) {
+            attackDamage += change;
+        }
+
     //stat functions
 
     //increases health stat
@@ -218,6 +230,7 @@ public class Player : MonoBehaviour
         if (spendablePoints > 0) {
             spendablePoints--;
             attack++;
+            modifyAttackDamage((int) (0.2 * attackDamage));
         }
     }
 
@@ -252,7 +265,8 @@ public class Player : MonoBehaviour
 
         //hitting the enemies
         foreach(Collider2D enemy in hitEnemies) {
-            Debug.Log("We hit " + enemy.name);
+            enemy.GetComponent<Creature>().TakeDamage(attackDamage);
+            //Debug.Log("We hit " + enemy.name);
         }
     }
 }
