@@ -24,6 +24,9 @@ public class Creature : MonoBehaviour
     private float timer;
     private int direction;
 
+    //animations
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +49,7 @@ public class Creature : MonoBehaviour
 
         // Move in the chosen direction
         if (isMoving) {
+            animator.SetTrigger("Walking");
             transform.Translate(Vector2.right * direction * moveSpeed * Time.deltaTime);
         }
     }
