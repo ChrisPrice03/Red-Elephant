@@ -14,9 +14,6 @@ public class PlayerMovement : MonoBehaviour
         player = GetComponent<Rigidbody2D>();
         
     }
-
-   
-
     // Change the newly loaded Scene to be the active Scene if it is loaded
     
 
@@ -50,7 +47,6 @@ public class PlayerMovement : MonoBehaviour
             }
             
         }
-        
         
         
     }
