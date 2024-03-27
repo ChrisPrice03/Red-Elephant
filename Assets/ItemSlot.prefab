@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3136116509578641423}
   - component: {fileID: 3362205069469637312}
   - component: {fileID: 7892674416045846550}
+  - component: {fileID: 8015576493169360514}
   m_Layer: 5
   m_Name: SelectedPanel
   m_TagString: Untagged
@@ -75,6 +76,29 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!223 &8015576493169360514
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610284949077604391}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &1830054368197731958
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,6 +245,8 @@ GameObject:
   - component: {fileID: 2385685107488679045}
   - component: {fileID: 5728866651618355213}
   - component: {fileID: 1950919611313600935}
+  - component: {fileID: 9185195061512220506}
+  - component: {fileID: 6325811221073275890}
   m_Layer: 5
   m_Name: ItemSlot
   m_TagString: Untagged
@@ -306,6 +332,48 @@ MonoBehaviour:
   isFull: 0
   quantityText: {fileID: 2481130085071847028}
   itemImage: {fileID: 7162902365465010004}
+  selectedShader: {fileID: 1610284949077604391}
+  thisItemSelected: 0
+--- !u!223 &9185195061512220506
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955456649117827536}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &6325811221073275890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955456649117827536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &3045339180030411619
 GameObject:
   m_ObjectHideFlags: 0
