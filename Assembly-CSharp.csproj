@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Settings.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Core\KeyboardMouseInput.cs" />
     <Compile Include="Assets\Scripts\CharacterCreationMenu.cs" />
+    <Compile Include="Assets\Scripts\InventoryManager.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Options\ScreenmodeOption.cs" />
     <Compile Include="Assets\Scripts\Difficulty.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Demo\Scripts\CubeController.cs" />
