@@ -9,8 +9,11 @@ public class Player : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.75f;
     public LayerMask creatureLayers;
+    public LayerMask interactLayer;
+    public float interactRange = 1f;
 
     //adding features attached to a player
+    public int difficulty = 2; //0 peaceful, 1 is easy, 2 is normal, 3 is hard
     public int level = 0;
     public int totalExp = 0;
     public int xpToLevel = 20;
@@ -73,6 +76,9 @@ public class Player : MonoBehaviour
                 attackNearby();
                 nextAttackTime = Time.time + 1f / attackRate;
             }
+        }
+        if (Input.GetMouseButtonDown(1)) {
+            interactNearby();
         }
         charInfoText.updateText(getPlayerInfo());
     }
@@ -149,14 +155,7 @@ public class Player : MonoBehaviour
         totalExp += count;
         xpSinceLevel += count;
         expBar.setXP(xpSinceLevel);
-        if (this.checkLevelStatus()) {
-            this.displayLevelUp();
-        }
-    }
-
-    //function to show a player when they leveled up
-    void displayLevelUp() {
-        //incomplete
+        this.checkLevelStatus();
     }
 
     //function called when a player dies
@@ -188,8 +187,9 @@ public class Player : MonoBehaviour
         healthBar.setHealth(curHp);
     }
 
-    //allows player to take damage
-    void loseHp(int lose) {
+    //allows player to take damage (affected by difficulty)
+    public void loseHp(int lose) {
+        lose *= difficulty;
         if (curHp - lose <= 0) {
             curHp = 0;
             healthBar.setHealth(0);
@@ -265,8 +265,37 @@ public class Player : MonoBehaviour
 
         //hitting the enemies
         foreach(Collider2D enemy in hitEnemies) {
-            enemy.GetComponent<Creature>().TakeDamage(attackDamage);
+            //enemy.GetComponent<Creature>().TakeDamage(attackDamage);
             //Debug.Log("We hit " + enemy.name);
+
+            Creature creature = enemy.GetComponent<Creature>();
+                if (creature != null) {
+                    creature.TakeDamage(attackDamage);
+                } else {
+                    TalkingPanda tp = enemy.GetComponent<TalkingPanda>();
+                    if (tp != null) {
+                        tp.TakeDamage(attackDamage);
+                    } else {
+                        HostilePanda hp = enemy.GetComponent<HostilePanda>();
+                             if (hp != null) {
+                                 hp.TakeDamage(attackDamage);
+                             } else {
+                                // Handle the case where the enemy is neither a Creature nor an Interactable
+                             }
+                    }
+                }
         }
     }
+
+    //this command is run when the player chooses to interact
+        void interactNearby() {
+            //detecting hit enemies
+            Collider2D[] interactables = Physics2D.OverlapCircleAll(attackPoint.position, interactRange, interactLayer);
+
+            //interacting with the enemies
+            foreach(Collider2D creature in interactables) {
+                creature.GetComponent<TalkingPanda>().interact();
+                //Debug.Log("We hit " + enemy.name);
+            }
+        }
 }
