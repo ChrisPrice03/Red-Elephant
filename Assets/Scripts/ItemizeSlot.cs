@@ -4,10 +4,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
-public class ItemSlot : MonoBehaviour, IPointerClickHandler
+public class ItemizeSlot : MonoBehaviour, IPointerClickHandler
 {
-    //======ITEM DATA===//
+    //===ITEM DATA===//
     public string itemName;
     public int quantity;
     public Sprite itemSprite;
@@ -16,35 +15,39 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public Sprite emptySprite;
 
     [SerializeField]
-    private int maxNumberOfItems;
+    public int maxNumberOfItems;
+
     //===ITEM SLOT===//
     [SerializeField]
     private TMP_Text quantityText;
+
     [SerializeField]
     private Image itemImage;
 
-    //==ITEM DESCRIPTION SLOT==//
+    //===ITEM DESCRITPTION SLOT===//
     public Image itemDescriptionImage;
-    public TMP_Text ItemDescriptionNameText;
-    public TMP_Text ItemDescriptionText;
+    public TMP_Text itemDescritptionNameText;
+    public TMP_Text itemDescritptionText;
+
 
     public GameObject selectedShader;
     public bool thisItemSelected;
 
-    private InventoryManager inventoryManager;
+    private InventoryManage inventoryManage;
 
-    private void Start()
+    public void Start()
     {
-        inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+        inventoryManage = GameObject.Find("InventoryCanvas").GetComponent<InventoryManage>();
     }
 
     public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
     {
-        if (isFull)
-        return quantity;
+        if (isFull) 
+        {
+            return quantity;
+        }
 
         this.itemName = itemName;
-        
         this.itemSprite = itemSprite;
         itemImage.sprite = itemSprite;
         this.itemDescription = itemDescription;
@@ -55,22 +58,17 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             quantityText.text = maxNumberOfItems.ToString();
             quantityText.enabled = true;
             isFull = true;
-        
-
-        int extraItems = this.quantity - maxNumberOfItems;
-        this.quantity = maxNumberOfItems;
-        return extraItems;
+    
+            int extraItems = this.quantity - maxNumberOfItems;
+            this.quantity = maxNumberOfItems;
+            return extraItems;
         }
-
-        quantityText.text = this.quantity.ToString();
-        quantityText.enabled = true;
-
-        return 0;
+            quantityText.text = this.quantity.ToString();
+            quantityText.enabled = true;      
+            return 0;  
     }
 
-    
     public void OnPointerClick(PointerEventData eventData)
-
     {
         if(eventData.button == PointerEventData.InputButton.Left)
         {
@@ -84,13 +82,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void OnLeftClick()
     {
-        inventoryManager.DeselectAllSlots();
+        inventoryManage.DeselectAllSlots();
         selectedShader.SetActive(true);
         thisItemSelected = true;
-        ItemDescriptionNameText.text = itemName;
-        ItemDescriptionText.text = itemDescription;
+        itemDescritptionNameText.text = itemName;
+        itemDescritptionText.text = itemDescription;
         itemDescriptionImage.sprite = itemSprite;
-        if(itemDescriptionImage.sprite == null)
+
+        if (itemDescriptionImage.sprite == null)
         {
             itemDescriptionImage.sprite = emptySprite;
         }
@@ -98,6 +97,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void OnRightClick()
     {
-        
+
     }
 }
