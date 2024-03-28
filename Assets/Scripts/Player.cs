@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     public Button speedButton;
     public Button intelligenceButton;
     public Image levelNotif;
+    public respawnScreen respawnScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -93,7 +94,7 @@ public class Player : MonoBehaviour
                 "\n\nAllocated Skill Points: " + spendablePoints + " Spendable" +
                 "\nHealth - " + health + " (+" + (health * 20) + "%)" +
                 "\nAttack - " + attack + " (+" + (attack * 20) + "%)" +
-                "\nDefense - " + defense + " (+" + (defense * 20) + "%)" +
+                "\nDefense - " + defense + " (-" + (defense) + "damage)" +
                 "\nSpeed - " + speed + " (+" + (speed * 20) + "%)" +
                 "\nIntelligence - " + intelligence;
     }
@@ -160,6 +161,7 @@ public class Player : MonoBehaviour
 
     //function called when a player dies
     void kill() {
+        respawnScreen.showDeath();
         //incomplete
     }
 
@@ -190,6 +192,7 @@ public class Player : MonoBehaviour
     //allows player to take damage (affected by difficulty)
     public void loseHp(int lose) {
         lose *= difficulty;
+        lose -= defense;
         if (curHp - lose <= 0) {
             curHp = 0;
             healthBar.setHealth(0);
