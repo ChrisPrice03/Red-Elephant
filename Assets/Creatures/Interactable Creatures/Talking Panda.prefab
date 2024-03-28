@@ -573,7 +573,7 @@ MonoBehaviour:
   - Take care!
   - See you later!
   center: {fileID: 4892803029841094330}
-  xpRange: 1
+  xpRange: 1.2
   playerLayer:
     serializedVersion: 2
     m_Bits: 256

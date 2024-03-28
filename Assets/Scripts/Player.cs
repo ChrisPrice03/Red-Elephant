@@ -281,7 +281,12 @@ public class Player : MonoBehaviour
                     if (tp != null) {
                         tp.TakeDamage(attackDamage);
                     } else {
-                        // Handle the case where the enemy is neither a Creature nor an Interactable
+                        HostilePanda hp = enemy.GetComponent<HostilePanda>();
+                             if (hp != null) {
+                                 hp.TakeDamage(attackDamage);
+                             } else {
+                                // Handle the case where the enemy is neither a Creature nor an Interactable
+                             }
                     }
                 }
         }
