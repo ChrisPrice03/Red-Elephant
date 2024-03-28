@@ -5,84 +5,104 @@ using UnityEngine;
 public class HostilePanda : MonoBehaviour
 {
     //the determining exp
-        public Transform center;
-        public float xpRange = 1f;
-        public LayerMask playerLayer;
+    public Transform center;
+    public float xpRange = 2f;
+    public LayerMask playerLayer;
 
-        public int maxHealth = 100;
-        public int currentHealth;
-        public int xpVal = 10;
+    public int maxHealth = 100;
+    public int currentHealth;
+    public int xpVal = 10;
+    public int attackDamage = 10;
+    public float attackRate = 1f; //one attack per second
+    float nextAttackTime = 0f;
 
-        public HealthBar healthBar;
+    public HealthBar healthBar;
 
-        //for creature wandering
-        public float moveSpeed = 1f;
-        public float wanderInterval = 2f;
+    //for creature wandering
+    public float moveSpeed = 1f;
+    public float wanderInterval = 2f;
 
-        private bool isMoving = true;
-        private float timer;
-        private int direction;
+    private bool isMoving = true;
+    private float timer;
+    private int direction;
 
-        //animations
-        public Animator animator;
+    //animations
+    public Animator animator;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-            currentHealth = maxHealth;
-            healthBar.setMaxHealth(maxHealth);
-            healthBar.setHealth(currentHealth);
+    // Start is called before the first frame update
+    void Start()
+    {
+        currentHealth = maxHealth;
+        healthBar.setMaxHealth(maxHealth);
+        healthBar.setHealth(currentHealth);
+        timer = wanderInterval;
+        direction = Random.Range(0, 2) == 0 ? -1 : 1;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        timer -= Time.deltaTime;
+
+        if (timer <= 0) {
+            changeDirection();
             timer = wanderInterval;
-            direction = Random.Range(0, 2) == 0 ? -1 : 1;
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            timer -= Time.deltaTime;
-
-            if (timer <= 0) {
-                ChangeDirection();
-                timer = wanderInterval;
-            }
-
-            // Move in the chosen direction
-            if (isMoving) {
-                animator.SetTrigger("Walking");
-                transform.Translate(Vector2.right * direction * moveSpeed * Time.deltaTime);
-            }
+        // Move in the chosen direction
+        if (isMoving) {
+            animator.SetTrigger("Walking");
+            transform.Translate(Vector2.right * direction * moveSpeed * Time.deltaTime);
         }
 
-        //allows the creature to take damage
-        public void TakeDamage(int damage) {
-            if (currentHealth - damage <= 0) {
-                        currentHealth = 0;
-                        healthBar.setHealth(0);
-                        Die();
-            }
-            else {
-                currentHealth -= damage;
-                healthBar.setHealth(currentHealth);
-            }
+        if (Time.time >= nextAttackTime) {
+             attackNearby();
+             nextAttackTime = Time.time + 1f / attackRate;
         }
 
-        //kills creature
-        void Die() {
-            //detecting nearby players
-            Collider2D[] nearbyPlayers = Physics2D.OverlapCircleAll(center.position, xpRange, playerLayer);
-            //adding xp
-            foreach(Collider2D player in nearbyPlayers) {
-                    player.GetComponent<Player>().addXp(xpVal);
-            }
+    }
 
-            GetComponent<Collider2D>().enabled = false;
-            this.enabled = false;
+    //allows the creature to take damage
+    public void TakeDamage(int damage) {
+        if (currentHealth - damage <= 0) {
+            currentHealth = 0;
+            healthBar.setHealth(0);
+            Die();
+        }
+        else {
+            currentHealth -= damage;
+            healthBar.setHealth(currentHealth);
+        }
+    }
+
+    //kills creature
+    void Die() {
+        //detecting nearby players
+        Collider2D[] nearbyPlayers = Physics2D.OverlapCircleAll(center.position, xpRange, playerLayer);
+        //adding xp
+        foreach(Collider2D player in nearbyPlayers) {
+            player.GetComponent<Player>().addXp(xpVal);
         }
 
-        //randomly sets wander direction
-        void ChangeDirection() {
-            // Randomly choose left or right
-            direction = Random.Range(0, 2) == 0 ? -1 : 1;
-            isMoving = Random.Range(0, 2) == 0 ? false : true;
+        GetComponent<Collider2D>().enabled = false;
+        this.enabled = false;
+    }
+
+    //randomly sets wander direction
+    void changeDirection() {
+        // Randomly choose left or right
+        direction = Random.Range(0, 2) == 0 ? -1 : 1;
+        isMoving = Random.Range(0, 2) == 0 ? false : true;
+    }
+
+    //this command is run to cause the creature to attack
+    void attackNearby() {
+        //detecting hit enemies
+        Collider2D[] nearbyPlayers = Physics2D.OverlapCircleAll(center.position, xpRange, playerLayer);
+
+        //attacking
+        foreach(Collider2D player in nearbyPlayers) {
+            player.GetComponent<Player>().loseHp(attackDamage);
         }
+    }
 }

@@ -194,7 +194,7 @@ public class Player : MonoBehaviour
     }
 
     //allows player to take damage
-    void loseHp(int lose) {
+    public void loseHp(int lose) {
         if (curHp - lose <= 0) {
             curHp = 0;
             healthBar.setHealth(0);

@@ -7021,6 +7021,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4043034194707341196, guid: 3dd8023d80c977a4c8f5972cf0506967, type: 3}
+      propertyPath: xpRange
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4043034194707341196, guid: 3dd8023d80c977a4c8f5972cf0506967, type: 3}
+      propertyPath: attackRate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4234615033843224964, guid: 3dd8023d80c977a4c8f5972cf0506967, type: 3}
       propertyPath: m_Name
       value: Hostile Panda
