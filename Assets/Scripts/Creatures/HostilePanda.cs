@@ -12,7 +12,7 @@ public class HostilePanda : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public int xpVal = 10;
-    public int attackDamage = 10;
+    public int attackDamage = 5;
     public float attackRate = 1f; //one attack per second
     float nextAttackTime = 0f;
 

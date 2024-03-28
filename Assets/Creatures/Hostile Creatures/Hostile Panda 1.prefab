@@ -231,7 +231,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   xpVal: 10
-  attackDamage: 10
+  attackDamage: 5
   attackRate: 1
   healthBar: {fileID: 425329675681529756}
   moveSpeed: 1

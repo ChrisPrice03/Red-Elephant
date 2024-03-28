@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public float interactRange = 1f;
 
     //adding features attached to a player
+    public int difficulty = 2; //0 peaceful, 1 is easy, 2 is normal, 3 is hard
     public int level = 0;
     public int totalExp = 0;
     public int xpToLevel = 20;
@@ -154,14 +155,7 @@ public class Player : MonoBehaviour
         totalExp += count;
         xpSinceLevel += count;
         expBar.setXP(xpSinceLevel);
-        if (this.checkLevelStatus()) {
-            this.displayLevelUp();
-        }
-    }
-
-    //function to show a player when they leveled up
-    void displayLevelUp() {
-        //incomplete
+        this.checkLevelStatus();
     }
 
     //function called when a player dies
@@ -193,8 +187,9 @@ public class Player : MonoBehaviour
         healthBar.setHealth(curHp);
     }
 
-    //allows player to take damage
+    //allows player to take damage (affected by difficulty)
     public void loseHp(int lose) {
+        lose *= difficulty;
         if (curHp - lose <= 0) {
             curHp = 0;
             healthBar.setHealth(0);
