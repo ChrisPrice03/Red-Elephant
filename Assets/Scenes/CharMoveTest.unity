@@ -585,6 +585,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444328714}
   m_CullTransparentMesh: 1
+--- !u!1 &455894608 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3331234451643859386, guid: e49afe7c911414da295440a1ea7898d7, type: 3}
+  m_PrefabInstance: {fileID: 1931193409}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &487516205
 GameObject:
   m_ObjectHideFlags: 0
@@ -4870,6 +4875,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326670311}
   m_CullTransparentMesh: 1
+--- !u!1 &1336371702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2870905383530802223, guid: e49afe7c911414da295440a1ea7898d7, type: 3}
+  m_PrefabInstance: {fileID: 1931193409}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1336371708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336371702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f74e3d35e15da549be761b5d090db55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneName: 
+  respawnUI: {fileID: 455894608}
+  GameisPaused: 0
+  s1: TitleScreenScene
 --- !u!1 &1514070546
 GameObject:
   m_ObjectHideFlags: 0
@@ -6335,6 +6361,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RespawnUI
       objectReference: {fileID: 0}
+    - target: {fileID: 2870905383530802223, guid: e49afe7c911414da295440a1ea7898d7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3331234451643859386, guid: e49afe7c911414da295440a1ea7898d7, type: 3}
       propertyPath: m_Name
       value: Respawn Menu
@@ -6351,6 +6381,10 @@ PrefabInstance:
       propertyPath: m_text
       value: You Died
       objectReference: {fileID: 0}
+    - target: {fileID: 6094548307871497873, guid: e49afe7c911414da295440a1ea7898d7, type: 3}
+      propertyPath: SceneName
+      value: CharMoveTest
+      objectReference: {fileID: 0}
     - target: {fileID: 8816675145137683900, guid: e49afe7c911414da295440a1ea7898d7, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
@@ -6359,10 +6393,15 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 103
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 1685743938498378869, guid: e49afe7c911414da295440a1ea7898d7, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 2561829120944142171, guid: e49afe7c911414da295440a1ea7898d7, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2870905383530802223, guid: e49afe7c911414da295440a1ea7898d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1336371708}
   m_SourcePrefab: {fileID: 100100000, guid: e49afe7c911414da295440a1ea7898d7, type: 3}
 --- !u!1 &1977895352
 GameObject:
@@ -6925,6 +6964,7 @@ MonoBehaviour:
   speedButton: {fileID: 1016707713}
   intelligenceButton: {fileID: 1592143943}
   levelNotif: {fileID: 57872377}
+  respawnScreen: {fileID: 1336371708}
 --- !u!1001 &2657991105873951145
 PrefabInstance:
   m_ObjectHideFlags: 0
