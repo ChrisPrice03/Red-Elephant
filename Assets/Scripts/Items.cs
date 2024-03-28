@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Items : MonoBehaviour
 {
     [SerializeField]
     private string itemName;
@@ -13,14 +13,16 @@ public class Item : MonoBehaviour
     [SerializeField]
     private Sprite sprite;
 
+    [TextArea]
     [SerializeField]
     private string itemDescription;
 
+    private InventoryManage inventoryManage;
 
-    private InventoryManager inventoryManager;
+    // Start is called before the first frame update
     void Start()
     {
-        inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+        inventoryManage = GameObject.Find("InventoryCanvas").GetComponent<InventoryManage>();
     }
 
     // Update is called once per frame
@@ -28,14 +30,8 @@ public class Item : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            int leftOverItems = inventoryManager.AddItem(itemName, quantity, sprite, itemDescription);
-            if (leftOverItems <= 0)
-            {
-                Destroy(gameObject);
-            }
-            else {
-                quantity = leftOverItems;
-            }
+            inventoryManage.AddItem(itemName, quantity, sprite, itemDescription);
+            Destroy(gameObject);
         }
     }
 }
