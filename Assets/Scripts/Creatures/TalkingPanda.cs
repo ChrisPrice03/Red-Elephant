@@ -5,6 +5,20 @@ using UnityEngine.UI;
 
 public class TalkingPanda : MonoBehaviour
 {
+    //textbox
+    public GameObject textbox;
+    public CharInfoText speech;
+    public string[] dialogueOptions = {"Hi there!",
+                                                   "How are you?",
+                                                   "Nice weather today!",
+                                                   "What's up?",
+                                                   "Have a good day!",
+                                                   "Good morning!",
+                                                   "How's it going?",
+                                                   "Lovely to see you!",
+                                                   "Take care!",
+                                                   "See you later!"};
+
     //the determining exp
     public Transform center;
     public float xpRange = 1f;
@@ -30,6 +44,7 @@ public class TalkingPanda : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        speech.updateText(SelectRandomDialogue());
         currentHealth = maxHealth;
         healthBar.setMaxHealth(maxHealth);
         healthBar.setHealth(currentHealth);
@@ -67,9 +82,20 @@ public class TalkingPanda : MonoBehaviour
         }
     }
 
-    //allows the creature to take damage
+    //allows the creature to be interacted with
     public void interact() {
-        Debug.Log("Interacted with me!");
+        //Debug.Log("Interacted with me!");
+        speech.updateText(SelectRandomDialogue());
+        textbox.SetActive(true);
+        StartCoroutine(HideAfterDelay());
+    }
+
+    private IEnumerator HideAfterDelay() {
+        // Wait for 5 seconds
+        yield return new WaitForSeconds(5f);
+
+        // Hide the object
+        textbox.SetActive(false);
     }
 
     //kills creature
@@ -90,5 +116,13 @@ public class TalkingPanda : MonoBehaviour
         // Randomly choose left or right
         direction = Random.Range(0, 2) == 0 ? -1 : 1;
         isMoving = Random.Range(0, 2) == 0 ? false : true;
+    }
+
+    public string SelectRandomDialogue() {
+        // Select a random index from the dialogueOptions array
+        int randomIndex = Random.Range(0, dialogueOptions.Length);
+
+        // Retrieve the selected dialogue
+        return dialogueOptions[randomIndex];
     }
 }
