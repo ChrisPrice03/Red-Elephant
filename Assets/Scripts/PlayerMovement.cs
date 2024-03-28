@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
-    
+    public Vector2Int mousePos;
+    public terrainGeneration terrainGenerator; 
     //player body
     private Rigidbody2D player; 
+    public bool hit;
     
     // Start is called before the first frame update
     private void Start()
@@ -20,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+
+
         //gets the x position of player
         float xAxis = Input.GetAxis("Horizontal");
         //if player is moved changed the players postion
@@ -28,24 +32,14 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetButtonDown("Jump")) {
             player.velocity = new Vector3(player.velocity.x, 7f);
         }
-        // mouse movement
-        float mouseX = -9999; 
-        float mouseY = -9999;
 
-        //if mouse moves
-        if (Input.GetAxis("Mouse X") != mouseX || Input.GetAxis("Mouse Y") != mouseY) {
-            //get coordinate change
-            mouseX = Input.GetAxis("Mouse X");
-            mouseY = Input.GetAxis("Mouse Y");
-
-            //determine if mouse is pressed
-            bool click = Input.GetButtonDown("Fire1");
-
-            //print mouse movement from last reading
-            if(click == true) {
-                Debug.Log("X,Y" + mouseX + " " + mouseY + " " + click);
-            }
+        hit = Input.GetMouseButton(0);
+        
+        mousePos.x = Mathf.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition).x);
+        mousePos.y = Mathf.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+        if (hit) {
             
+            terrainGenerator.OpenLootBox(mousePos.x, mousePos.y);
         }
         
         
