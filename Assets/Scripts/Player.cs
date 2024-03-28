@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.75f;
     public LayerMask creatureLayers;
+    public LayerMask interactLayer;
+    public float interactRange = 1f;
 
     //adding features attached to a player
     public int level = 0;
@@ -73,6 +75,9 @@ public class Player : MonoBehaviour
                 attackNearby();
                 nextAttackTime = Time.time + 1f / attackRate;
             }
+        }
+        if (Input.GetMouseButtonDown(1)) {
+            interactNearby();
         }
         charInfoText.updateText(getPlayerInfo());
     }
@@ -265,8 +270,32 @@ public class Player : MonoBehaviour
 
         //hitting the enemies
         foreach(Collider2D enemy in hitEnemies) {
-            enemy.GetComponent<Creature>().TakeDamage(attackDamage);
+            //enemy.GetComponent<Creature>().TakeDamage(attackDamage);
             //Debug.Log("We hit " + enemy.name);
+
+            Creature creature = enemy.GetComponent<Creature>();
+                if (creature != null) {
+                    creature.TakeDamage(attackDamage);
+                } else {
+                    TalkingPanda tp = enemy.GetComponent<TalkingPanda>();
+                    if (tp != null) {
+                        tp.TakeDamage(attackDamage);
+                    } else {
+                        // Handle the case where the enemy is neither a Creature nor an Interactable
+                    }
+                }
         }
     }
+
+    //this command is run when the player chooses to interact
+        void interactNearby() {
+            //detecting hit enemies
+            Collider2D[] interactables = Physics2D.OverlapCircleAll(attackPoint.position, interactRange, interactLayer);
+
+            //interacting with the enemies
+            foreach(Collider2D creature in interactables) {
+                creature.GetComponent<TalkingPanda>().interact();
+                //Debug.Log("We hit " + enemy.name);
+            }
+        }
 }
