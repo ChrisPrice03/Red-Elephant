@@ -1,56 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.IO;
 using TMPro;
-
+using System.IO;
 public class SaveCharacter : MonoBehaviour
 {
-    public GameObject character;
-    public TMP_InputField inputField;
+    public CharacterCreationMenu characterCreationMenu;
 
-    public TMP_Text notificationField;
-
-    public GameObject notificationPanel;
-    private int maxCharacterCount = 10;
-
-    public void Save()
+    [System.Serializable]
+    public class CharacterData
     {
-        if (GetCharacterCount() >= maxCharacterCount)
-            {
-                notificationField.text = "Character List is Full. Delete a Character to save a new one!";
-                notificationPanel.SetActive(true);
-                inputField.text = "Enter Name...";
+        public int[] indices;
 
-                StartCoroutine(HideSuccessPanel());
-                return;
-            }
-        string characterName = inputField.text; 
-        string prefabPath = "Assets/CharacterCustomizations/" + characterName + ".prefab";
-        PrefabUtility.SaveAsPrefabAsset(character, prefabPath);
-        inputField.text = "Enter Name...";
-
-        notificationField.text = "Character successfully added to list!";
-        notificationPanel.SetActive(true);
-
-        // Start the coroutine to hide the panel after a few seconds
-        StartCoroutine(HideSuccessPanel());
-
+        public string characterName;
     }
-    private int GetCharacterCount()
+
+    public void SaveCharacterToJson()
     {
-        string[] prefabFiles = Directory.GetFiles("Assets/CharacterCustomizations/", "*.prefab");
-        return prefabFiles.Length;
-    }
-    IEnumerator HideSuccessPanel()
-    {
-        // Wait for 3 seconds
-        yield return new WaitForSeconds(2f);
+        // Create an instance of CharacterData
+        CharacterData data = new CharacterData();
 
-        // Hide the success panel after 3 seconds
-        notificationPanel.SetActive(false);
+        // Get indices from the characterCreationMenu
+        data.indices = characterCreationMenu.Indices();
+
+        // Get the character name from the input field
+        data.characterName = characterCreationMenu.characterNameInput.text;
+
+        // Serialize data to JSON
+        string jsonData = JsonUtility.ToJson(data);
+
+        // Define the file path to save JSON file
+        string filePath = Application.persistentDataPath + "/" + data.characterName + ".json";
+
+        // Write JSON data to file
+        try
+        {
+            // Write JSON data to file
+            File.WriteAllText(filePath, jsonData);
+            Debug.Log("JSON file saved successfully: " + filePath);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Error saving JSON file: " + e.Message);
+        }
+
+        // Reset input field
+        characterCreationMenu.characterNameInput.text = "Enter Name...";
     }
-}
+    }
+

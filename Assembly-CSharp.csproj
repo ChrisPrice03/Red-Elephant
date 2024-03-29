@@ -80,9 +80,11 @@
     <Compile Include="Assets\Scripts\ItemizeSlot.cs" />
     <Compile Include="Assets\Scripts\CharacterCreationMenu.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Options\ScreenmodeOption.cs" />
+    <Compile Include="Assets\Scripts\ButtonSoundEffect.cs" />
     <Compile Include="Assets\Scripts\Difficulty.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Demo\Scripts\CubeController.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\PlayerEmote.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\ScreenshotTaker.cs" />
     <Compile Include="Assets\Scripts\InventoryManage.cs" />
@@ -98,6 +100,7 @@
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Core\SubOption.cs" />
     <Compile Include="Assets\Scripts\Creatures\HostilePanda.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Core\GraphicSettingDataContainer.cs" />
+    <Compile Include="Assets\Scripts\CharacterLoader.cs" />
     <Compile Include="Assets\Scripts\ReturnToPage.cs" />
     <Compile Include="Assets\Scripts\Creatures\FriendlyPanda.cs" />
     <Compile Include="Assets\Scripts\Items.cs" />
@@ -105,6 +108,7 @@
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Options\ResolutionOption.cs" />
     <Compile Include="Assets\Scripts\PasueMenu.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\SpriteDropdown.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Helpers\GraphicSettingHelperMethods.cs" />
     <Compile Include="Assets\Scripts\SelectionManager.cs" />
     <Compile Include="Assets\CamMovement.cs" />

@@ -38,4 +38,9 @@ public class OutfitChanger : MonoBehaviour
         currentOption = Random.Range(0, options.Count - 1);
         bodyPart.sprite = options[currentOption];
     }
+
+    public int GetCurrentOption() 
+    {
+        return currentOption;
+    }
 }

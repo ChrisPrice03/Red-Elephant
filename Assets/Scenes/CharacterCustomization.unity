@@ -1715,7 +1715,7 @@ GameObject:
   - component: {fileID: 348614210}
   - component: {fileID: 348614211}
   m_Layer: 5
-  m_Name: RightHandSelector0
+  m_Name: RightHandSelector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2197,6 +2197,7 @@ MonoBehaviour:
   - {fileID: 1904697031}
   - {fileID: 348614211}
   - {fileID: 482115226}
+  characterNameInput: {fileID: 315814925}
 --- !u!1 &465889234
 GameObject:
   m_ObjectHideFlags: 0
@@ -4717,10 +4718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f607855a3cc771142be80f761531a0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 704821247180846033}
-  inputField: {fileID: 315814925}
-  notificationField: {fileID: 667282785}
-  notificationPanel: {fileID: 1932397434}
+  characterCreationMenu: {fileID: 401908733}
 --- !u!1 &1181747827
 GameObject:
   m_ObjectHideFlags: 0
@@ -5206,7 +5204,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 401908733}
         m_TargetAssemblyTypeName: CharacterCreationMenu, Assembly-CSharp
-        m_MethodName: Randomizecharacter
+        m_MethodName: RandomizeCharacter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8255,7 +8253,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1171747120}
         m_TargetAssemblyTypeName: SaveCharacter, Assembly-CSharp
-        m_MethodName: Save
+        m_MethodName: SaveCharacterToJson
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9682,11 +9680,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9963f8ebd2e2b6245b7060ba9f1be555, type: 3}
---- !u!1 &704821247180846033 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4994712248454439160, guid: 9963f8ebd2e2b6245b7060ba9f1be555, type: 3}
-  m_PrefabInstance: {fileID: 704821247180846032}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
