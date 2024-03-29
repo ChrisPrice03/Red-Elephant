@@ -3348,11 +3348,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1322552178766643170, guid: 8d26de0f1e14148c0b3876880fea73d0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.2947
+      value: -3.56
       objectReference: {fileID: 0}
     - target: {fileID: 1322552178766643170, guid: 8d26de0f1e14148c0b3876880fea73d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.5055
+      value: -1.56
       objectReference: {fileID: 0}
     - target: {fileID: 1322552178766643170, guid: 8d26de0f1e14148c0b3876880fea73d0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3386,6 +3386,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3804164172980194297, guid: 8d26de0f1e14148c0b3876880fea73d0, type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3804164172980194297, guid: 8d26de0f1e14148c0b3876880fea73d0, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 63591265
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414609864780485466, guid: 8d26de0f1e14148c0b3876880fea73d0, type: 3}
+      propertyPath: sceneInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 468e966baa9fd4e6b9e52036dd873f52, type: 2}
+    - target: {fileID: 4414609864780485466, guid: 8d26de0f1e14148c0b3876880fea73d0, type: 3}
+      propertyPath: sceneName
+      value: CharMoveTest
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3405,7 +3421,7 @@ GameObject:
   - component: {fileID: 626881244}
   - component: {fileID: 626881243}
   - component: {fileID: 626881242}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5459,7 +5475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1120361158}
   - component: {fileID: 1120361157}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5782,7 +5798,7 @@ GameObject:
   - component: {fileID: 1324960902}
   - component: {fileID: 1324960904}
   - component: {fileID: 1324960903}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
