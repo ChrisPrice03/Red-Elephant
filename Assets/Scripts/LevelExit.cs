@@ -17,7 +17,7 @@ public class LevelExit : MonoBehaviour
     public SceneInfo sceneInfo;
     void OnTriggerEnter2D(Collider2D player) 
     {
-        sceneInfo.isNextScene = isNextScene;
+        // sceneInfo.isNextScene = isNextScene;
         SceneManager.LoadScene(sceneName);
         // StartCoroutine(LoadNextLevel());
 
