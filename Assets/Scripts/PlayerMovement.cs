@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
             camChar.SetActive(true);
             camWorld.SetActive(false);
         }
+        
         mousePos.x = Mathf.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition).x);
         mousePos.y = Mathf.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
         if (hit) {
