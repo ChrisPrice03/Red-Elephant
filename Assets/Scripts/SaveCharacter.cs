@@ -23,6 +23,7 @@ public class SaveCharacter : MonoBehaviour
             {
                 notificationField.text = "Character List is Full. Delete a Character to save a new one!";
                 notificationPanel.SetActive(true);
+                inputField.text = "Enter Name...";
 
                 StartCoroutine(HideSuccessPanel());
                 return;
@@ -47,7 +48,7 @@ public class SaveCharacter : MonoBehaviour
     IEnumerator HideSuccessPanel()
     {
         // Wait for 3 seconds
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         // Hide the success panel after 3 seconds
         notificationPanel.SetActive(false);
