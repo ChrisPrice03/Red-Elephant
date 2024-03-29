@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
     //player body
     private Rigidbody2D player; 
     public bool hit;
+
+    public GameObject camChar;
+    public GameObject camWorld;
     
     // Start is called before the first frame update
     private void Start()
@@ -35,6 +38,15 @@ public class PlayerMovement : MonoBehaviour
 
         hit = Input.GetMouseButton(0);
         
+        if (Input.GetButtonDown("mKey")) {
+            camWorld.SetActive(true);
+            camChar.SetActive(false);
+        }
+        else if (Input.GetButtonDown("nKey"))
+        {
+            camChar.SetActive(true);
+            camWorld.SetActive(false);
+        }
         mousePos.x = Mathf.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition).x);
         mousePos.y = Mathf.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
         if (hit) {
