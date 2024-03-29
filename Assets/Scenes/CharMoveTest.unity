@@ -4891,6 +4891,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215921095}
   m_CullTransparentMesh: 1
+--- !u!114 &1300985669 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7775278502345266712, guid: d34fdd072dc8daa4aad361766a54a569, type: 3}
+  m_PrefabInstance: {fileID: 8044645285716070817}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f74e3d35e15da549be761b5d090db55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1326670311
 GameObject:
   m_ObjectHideFlags: 0
@@ -4966,17 +4977,14 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326670311}
   m_CullTransparentMesh: 1
-
 --- !u!114 &1340052026 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5759846836773562316, guid: 2297691247e4744889d5947c18125b42, type: 3}
   m_PrefabInstance: {fileID: 64530311}
-
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-
   m_Script: {fileID: 11500000, guid: d8fa0ded1007a45fc88f343ecc5ccb44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -6905,7 +6913,7 @@ MonoBehaviour:
   speedButton: {fileID: 1016707713}
   intelligenceButton: {fileID: 1592143943}
   levelNotif: {fileID: 57872377}
-  respawnScreen: {fileID: 1336371708}
+  respawnScreen: {fileID: 1300985669}
 --- !u!1001 &234221084903953134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7331,11 +7339,6 @@ SceneRoots:
   - {fileID: 4407966152020087525}
   - {fileID: 8482461674720461444}
   - {fileID: 5995509390361380382}
-
-  - {fileID: 2657991105873951145}
-  - {fileID: 1931193409}
   - {fileID: 64530311}
-
   - {fileID: 234221084903953134}
   - {fileID: 8044645285716070817}
-
