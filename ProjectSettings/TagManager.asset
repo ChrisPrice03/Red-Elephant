@@ -16,7 +16,7 @@ TagManager:
   - Player
   - Ground
   - Interactable
-  - 
+  - Tile
   - 
   - 
   - 
@@ -44,15 +44,15 @@ TagManager:
   - name: Background
     uniqueID: 2559406915
     locked: 0
+  - name: Tile
+    uniqueID: 2889259837
+    locked: 0
   - name: Terrain
     uniqueID: 210288409
     locked: 0
   - name: Player
     uniqueID: 1905571705
     locked: 0
-  - name: New Layer 4
-    uniqueID: 2759727703
-    locked: 0
-  - name: New Layer 5
+  - name: Interactable
     uniqueID: 63591265
     locked: 0
