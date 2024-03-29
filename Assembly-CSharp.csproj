@@ -66,25 +66,30 @@
   <ItemGroup>
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Manager\GraphicMenuManager.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Core\Option.cs" />
+    <Compile Include="Assets\respawnScreen.cs" />
     <Compile Include="Assets\Scripts\ButtonPressScript.cs" />
     <Compile Include="Assets\terrainGeneration.cs" />
     <Compile Include="Assets\Scripts\DifficultySO.cs" />
     <Compile Include="Assets\Scripts\CameraZoom.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Options\QualityLevelOption.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
+    <Compile Include="Assets\ApplyDifficulty.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Core\KeyboardMouseInput.cs" />
     <Compile Include="Assets\Scripts\Creatures\TalkingPanda.cs" />
+    <Compile Include="Assets\Scripts\Loot.cs" />
+    <Compile Include="Assets\Scripts\ItemizeSlot.cs" />
     <Compile Include="Assets\Scripts\CharacterCreationMenu.cs" />
-    <Compile Include="Assets\Scripts\InventoryManager.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Options\ScreenmodeOption.cs" />
     <Compile Include="Assets\Scripts\Difficulty.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Demo\Scripts\CubeController.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\ScreenshotTaker.cs" />
+    <Compile Include="Assets\Scripts\InventoryManage.cs" />
     <Compile Include="Assets\Scripts\PauseScript.cs" />
     <Compile Include="Assets\Scripts\OutfitChanger.cs" />
-    <Compile Include="Assets\Scripts\ItemSlot.cs" />
+    <Compile Include="Assets\Scripts\Return.cs" />
+    <Compile Include="Assets\LootBag.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Manager\GraphicSettingSaveManager.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Core\XML\XmlManager.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
@@ -95,13 +100,14 @@
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Core\GraphicSettingDataContainer.cs" />
     <Compile Include="Assets\Scripts\ReturnToPage.cs" />
     <Compile Include="Assets\Scripts\Creatures\FriendlyPanda.cs" />
+    <Compile Include="Assets\Scripts\Items.cs" />
     <Compile Include="Assets\Scripts\ExpBar.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Options\ResolutionOption.cs" />
     <Compile Include="Assets\Scripts\PasueMenu.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Helpers\GraphicSettingHelperMethods.cs" />
     <Compile Include="Assets\Scripts\SelectionManager.cs" />
-    <Compile Include="Assets\Scripts\Item.cs" />
+    <Compile Include="Assets\CamMovement.cs" />
     <Compile Include="Assets\Scripts\CharInfoText.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Demo\Scripts\CameraController.cs" />
   </ItemGroup>
@@ -981,6 +987,7 @@
     <ProjectReference Include="Unity.2D.Aseprite.Editor.csproj" />
     <ProjectReference Include="Unity.RenderPipelines.Universal.Editor.csproj" />
     <ProjectReference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.csproj" />
+    <ProjectReference Include="Unity.Sysroot.Linux_x86_64.csproj" />
     <ProjectReference Include="PsdPlugin.csproj" />
     <ProjectReference Include="Unity.RenderPipelines.Universal.Runtime.csproj" />
     <ProjectReference Include="Unity.PlasticSCM.Editor.csproj" />
@@ -1001,7 +1008,9 @@
     <ProjectReference Include="Unity.2D.Common.Runtime.csproj" />
     <ProjectReference Include="Unity.RenderPipeline.Universal.ShaderLibrary.csproj" />
     <ProjectReference Include="Unity.Timeline.csproj" />
+    <ProjectReference Include="Unity.Toolchain.Macos-arm64-Linux-x86_64.csproj" />
     <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj" />
+    <ProjectReference Include="Unity.SysrootPackage.Editor.csproj" />
     <ProjectReference Include="Unity.InternalAPIEditorBridge.001.csproj" />
     <ProjectReference Include="Unity.2D.Psdimporter.Editor.csproj" />
     <ProjectReference Include="Unity.VisualScripting.State.Editor.csproj" />

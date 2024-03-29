@@ -18,13 +18,16 @@ public class HostilePanda : MonoBehaviour
 
     public HealthBar healthBar;
 
-    //for creature wandering
+    //for creature wandering or player finding
     public float moveSpeed = 1f;
     public float wanderInterval = 2f;
 
     private bool isMoving = true;
     private float timer;
     private int direction;
+
+    public float detectionRange = 5f;
+    public Transform player;
 
     //animations
     public Animator animator;
@@ -49,17 +52,30 @@ public class HostilePanda : MonoBehaviour
             timer = wanderInterval;
         }
 
-        // Move in the chosen direction
-        if (isMoving) {
-            animator.SetTrigger("Walking");
-            transform.Translate(Vector2.right * direction * moveSpeed * Time.deltaTime);
-        }
+        //moving towards player
+        Vector3 directionToPlayer = player.position - transform.position;
+        float distanceToPlayer = directionToPlayer.magnitude;
 
+        // Check if the player is within the detection range
+        if (distanceToPlayer <= detectionRange) {
+            // Normalize the direction vector to maintain constant speed
+            Vector3 moveDirection = directionToPlayer.normalized;
+
+            // Move towards the player
+            animator.SetTrigger("Walking");
+            transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+        }
+        else {
+            // Move in the chosen direction
+            if (isMoving) {
+                animator.SetTrigger("Walking");
+                transform.Translate(Vector2.right * direction * moveSpeed * Time.deltaTime);
+            }
+        }
         if (Time.time >= nextAttackTime) {
              attackNearby();
              nextAttackTime = Time.time + 1f / attackRate;
         }
-
     }
 
     //allows the creature to take damage
@@ -102,7 +118,17 @@ public class HostilePanda : MonoBehaviour
 
         //attacking
         foreach(Collider2D player in nearbyPlayers) {
-            player.GetComponent<Player>().loseHp(attackDamage);
+            animator.SetTrigger("Attacking");
+            StartCoroutine(HitAfterDelay(player.GetComponent<Player>()));
+            //player.GetComponent<Player>().loseHp(attackDamage);
         }
+    }
+
+    private IEnumerator HitAfterDelay(Player player) {
+        // Wait for 0.5 seconds
+        yield return new WaitForSeconds(0.4f);
+
+        // Hide the object
+        player.loseHp(attackDamage);
     }
 }
