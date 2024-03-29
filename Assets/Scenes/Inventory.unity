@@ -1466,6 +1466,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84c295ca4abb144cf8f42a9e85ae44b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mousePos: {x: 0, y: 0}
+  terrainGenerator: {fileID: 5759846836773562316, guid: 2297691247e4744889d5947c18125b42, type: 3}
+  hit: 0
 --- !u!61 &590272349
 BoxCollider2D:
   m_ObjectHideFlags: 0
