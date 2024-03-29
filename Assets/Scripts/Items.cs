@@ -11,7 +11,7 @@ public class Items : MonoBehaviour
     private int quantity;
 
     [SerializeField]
-    private Sprite sprite;
+    public Sprite sprite;
 
     [TextArea]
     [SerializeField]

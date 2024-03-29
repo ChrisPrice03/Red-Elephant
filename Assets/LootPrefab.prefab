@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6835843944445797591}
   - component: {fileID: 4943629431522912494}
   - component: {fileID: 3973715107357275705}
+  - component: {fileID: 2407125665605711017}
   m_Layer: 8
   m_Name: LootPrefab
   m_TagString: Untagged
@@ -112,3 +113,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2407125665605711017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6828378228841523801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 626d50b9a8f70314fae1962f3772bed9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Loot
+  quantity: 1
+  sprite: {fileID: 0}
+  itemDescription: Loot from loot box

@@ -38,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
         mousePos.x = Mathf.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition).x);
         mousePos.y = Mathf.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
         if (hit) {
-            
             terrainGenerator.OpenLootBox(mousePos.x, mousePos.y);
         }
         
