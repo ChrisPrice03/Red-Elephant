@@ -4509,7 +4509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9664425953a0d4e6a9b80fa801c494ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: SavedCharactersScreen
+  SceneName: SavedCharactersScene
   pauseMenuUI: {fileID: 0}
   GameisPaused: 0
   s1: TitleScreenScene
@@ -4719,6 +4719,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterCreationMenu: {fileID: 401908733}
+  notificationsPanel: {fileID: 1932397434}
+  notification: {fileID: 667282785}
 --- !u!1 &1181747827
 GameObject:
   m_ObjectHideFlags: 0
