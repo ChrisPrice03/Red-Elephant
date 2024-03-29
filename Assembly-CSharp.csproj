@@ -90,6 +90,7 @@
     <Compile Include="Assets\Scripts\InventoryManage.cs" />
     <Compile Include="Assets\Scripts\PauseScript.cs" />
     <Compile Include="Assets\Scripts\OutfitChanger.cs" />
+    <Compile Include="Assets\Audio.cs" />
     <Compile Include="Assets\Scripts\Return.cs" />
     <Compile Include="Assets\LootBag.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Manager\GraphicSettingSaveManager.cs" />
