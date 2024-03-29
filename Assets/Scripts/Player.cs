@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     public Button speedButton;
     public Button intelligenceButton;
     public Image levelNotif;
+    public respawnScreen respawnScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -160,6 +161,7 @@ public class Player : MonoBehaviour
 
     //function called when a player dies
     void kill() {
+        respawnScreen.showDeath();
         //incomplete
     }
 

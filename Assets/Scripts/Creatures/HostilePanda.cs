@@ -118,7 +118,17 @@ public class HostilePanda : MonoBehaviour
 
         //attacking
         foreach(Collider2D player in nearbyPlayers) {
-            player.GetComponent<Player>().loseHp(attackDamage);
+            animator.SetTrigger("Attacking");
+            StartCoroutine(HitAfterDelay(player.GetComponent<Player>()));
+            //player.GetComponent<Player>().loseHp(attackDamage);
         }
+    }
+
+    private IEnumerator HitAfterDelay(Player player) {
+        // Wait for 0.5 seconds
+        yield return new WaitForSeconds(0.4f);
+
+        // Hide the object
+        player.loseHp(attackDamage);
     }
 }
