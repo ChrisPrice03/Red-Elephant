@@ -1,5 +1,8 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 2bdba03ae94ee4847b7c11fee52ac7c9
+=======
+>>>>>>> parent of 8f66081 (SavedCharactersMenu)
 guid: c13d703c81222b74eb1da183e72741ea
 NativeFormatImporter:
   externalObjects: {}
