@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3becc2d6150f45c582645d1465fd5cd, type: 3}
   m_Name: Loot_3
   m_EditorClassIdentifier: 
-  lootSprite: {fileID: 0}
-  lootName: 
-  dropChance: 0
+  lootSprite: {fileID: 21300000, guid: 31dead1f4215145119db562a9604d519, type: 3}
+  lootName: Pie
+  dropChance: 50
