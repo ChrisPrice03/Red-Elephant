@@ -80,9 +80,11 @@
     <Compile Include="Assets\Scripts\ItemizeSlot.cs" />
     <Compile Include="Assets\Scripts\CharacterCreationMenu.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Options\ScreenmodeOption.cs" />
+    <Compile Include="Assets\Scripts\ButtonSoundEffect.cs" />
     <Compile Include="Assets\Scripts\Difficulty.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Demo\Scripts\CubeController.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\PlayerEmote.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\ScreenshotTaker.cs" />
     <Compile Include="Assets\Scripts\InventoryManage.cs" />
