@@ -18,19 +18,17 @@ public class CharacterLoader : MonoBehaviour
             {
                 Debug.Log("Available Customizations:");
 
-                // Loop through the files starting from the currentIndex
-                for (int i = currentIndex; i < files.Length + currentIndex; i++)
+                // Apply saved customization for each character
+                ApplySavedCharacterCustomization(files[currentIndex]);
+
+                // Increment currentIndex
+                currentIndex++;
+
+                if(currentIndex >= files.Length)
                 {
-                    int index = i % files.Length; // Wrap around the index when reaching the end
-
-                    // Extract character name from file path
-                    string characterName = Path.GetFileNameWithoutExtension(files[index]);
-
-                    Debug.Log("Character: " + characterName);
-
-                    // Apply saved customization for each character
-                    ApplySavedCharacterCustomization(files[index]);
+                    currentIndex = 0;
                 }
+
             }
             else
             {

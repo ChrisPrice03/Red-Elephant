@@ -6,4 +6,5 @@ public class SpriteDropdown : MonoBehaviour
     
     public List<OutfitChanger> outfitChangers = new List<OutfitChanger>();
 
+
 }

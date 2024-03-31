@@ -1469,6 +1469,8 @@ MonoBehaviour:
   mousePos: {x: 0, y: 0}
   terrainGenerator: {fileID: 5759846836773562316, guid: 2297691247e4744889d5947c18125b42, type: 3}
   hit: 0
+  camChar: {fileID: 0}
+  camWorld: {fileID: 0}
 --- !u!61 &590272349
 BoxCollider2D:
   m_ObjectHideFlags: 0
