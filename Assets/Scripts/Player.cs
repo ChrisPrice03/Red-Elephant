@@ -192,7 +192,7 @@ public class Player : MonoBehaviour
 
     bool checkDeath() {
         if (curHp <= 0) {
-            //this.kill();
+            this.kill();
             return true;
         }
         return false;
@@ -224,6 +224,11 @@ public class Player : MonoBehaviour
         if (this.checkDeath()) {
             //this.showDeath();
         }
+    }
+
+    //function called when a player dies
+    void kill() {
+        respawnScreen.showDeath();
     }
 
     //allows player to change maxHp
