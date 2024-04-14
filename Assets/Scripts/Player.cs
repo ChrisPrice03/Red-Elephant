@@ -110,10 +110,10 @@ public class Player : MonoBehaviour
                 "\nLevel Progress: " + xpSinceLevel + "/" + xpToLevel +
                 "\nTotal Xp: " + totalExp +
                 "\n\nAllocated Skill Points: " + spendablePoints + " Spendable" +
-                "\nHealth - " + health + " (+" + (health * 20) + "%)" +
-                "\nAttack - " + attack + " (+" + (attack * 20) + "%)" +
-                "\nDefense - " + defense + " (-" + (defense) + "damage)" +
-                "\nSpeed - " + speed + " (+" + (speed * 20) + "%)" +
+                "\nHealth - " + health + " (+" + (int) (health * 20 * (1 + (baseHealth * 0.2))) + "%)" +
+                "\nAttack - " + attack + " (+" + (int) (attack * 20 * (1 + (baseAttack * 0.2))) + "%)" +
+                "\nDefense - " + defense + " (-" + (int) (defense * (1 + (baseDefense * 0.2))) + "damage)" +
+                "\nSpeed - " + speed + " (+" + (int) (speed * 20 * (1 + (baseSpeed * 0.2))) + "%)" +
                 "\nIntelligence - " + intelligence;
     }
 
@@ -122,10 +122,10 @@ public class Player : MonoBehaviour
         return "Spendable Skill Points: " + skillPoints +
                 "\n" +
                 "\nSkills:" +
-                "\nHealth:" + baseHealth + "/5" +
-                "\nAttack:" + baseAttack + "/5" +
-                "\nDefense:" + baseDefense + "/5" +
-                "\nSpeed:" + baseSpeed + "/5" +
+                "\nHealth:" + baseHealth + "/5" + " (+ " + baseHealth * 20 + "% effect)" +
+                "\nAttack:" + baseAttack + "/5" + " (+ " + baseAttack * 20 + "% effect)" +
+                "\nDefense:" + baseDefense + "/5" + " (+ " + baseDefense * 20 + "% effect)" +
+                "\nSpeed:" + baseSpeed + "/5" + " (+ " + baseSpeed * 20 + "% effect)" +
                 "\n" +
                 "\nThese points increase the effectiveness of other skill points on your player";
     }
@@ -212,7 +212,7 @@ public class Player : MonoBehaviour
     //allows player to take damage (affected by difficulty)
     public void loseHp(int lose) {
         lose *= difficulty;
-        lose -= defense;
+        lose -= (int) (defense * (1 + (baseDefense * 0.2)));
         if (curHp - lose <= 0) {
             curHp = 0;
             healthBar.setHealth(0);
@@ -244,7 +244,7 @@ public class Player : MonoBehaviour
         if (spendablePoints > 0) {
             spendablePoints--;
             health++;
-            modifyMaxHp((int) (0.2 * maxHp));
+            modifyMaxHp((int) (0.2 * maxHp * (1 + (baseHealth * 0.2))));
         }
     }
 
@@ -253,7 +253,7 @@ public class Player : MonoBehaviour
         if (spendablePoints > 0) {
             spendablePoints--;
             attack++;
-            modifyAttackDamage((int) (0.2 * attackDamage));
+            modifyAttackDamage((int) ((0.2 * attackDamage) * (1 + (baseAttack * 0.2))));
         }
     }
 
