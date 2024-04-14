@@ -2579,7 +2579,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 170, y: -40}
+  m_AnchoredPosition: {x: 169, y: 29}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &514708476
@@ -3013,7 +3013,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 170, y: -80}
+  m_AnchoredPosition: {x: 169, y: -11}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &592170244
@@ -7203,7 +7203,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 170, y: -20}
+  m_AnchoredPosition: {x: 169, y: 49}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &982727415
@@ -7820,7 +7820,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.4455, y: -38.415}
+  m_AnchoredPosition: {x: 6.4453, y: 0.0000076294}
   m_SizeDelta: {x: 373.0987, y: 217.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1083223319
@@ -7856,7 +7856,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Spendable Skill Points: 0 \n\nSkills:\n\nHealth\nAttack\nDefense\nSpeed\n"
+  m_text: "Spendable Skill Points: 0 \n\nSkills:\nHealth\nAttack\nDefense\nSpeed\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bbf3f9324e129654aa3ff5fa8ded749b, type: 2}
   m_sharedMaterial: {fileID: -6125097739937725806, guid: bbf3f9324e129654aa3ff5fa8ded749b, type: 2}
@@ -11987,7 +11987,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 170, y: -60}
+  m_AnchoredPosition: {x: 169, y: 9}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1537383925
@@ -13782,14 +13782,23 @@ MonoBehaviour:
   defense: 0
   speed: 0
   intelligence: 0
+  baseHealth: 0
+  baseAttack: 0
+  baseDefense: 0
+  baseSpeed: 0
   healthBar: {fileID: 1593218948}
   expBar: {fileID: 1803278964}
   charInfoText: {fileID: 1793189012}
+  baseSkillsText: {fileID: 1083223319}
   healthButton: {fileID: 1855619467}
   attackButton: {fileID: 1514070548}
   defenseButton: {fileID: 376718897}
   speedButton: {fileID: 1016707713}
   intelligenceButton: {fileID: 1592143943}
+  baseHealthButton: {fileID: 982727415}
+  baseAttackButton: {fileID: 514708476}
+  baseDefenseButton: {fileID: 1537383925}
+  baseSpeedButton: {fileID: 592170244}
   levelNotif: {fileID: 57872377}
   respawnScreen: {fileID: 1300985669}
 --- !u!114 &1840427076
@@ -14807,7 +14816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2100277620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15139,14 +15148,23 @@ MonoBehaviour:
   defense: 0
   speed: 0
   intelligence: 0
+  baseHealth: 0
+  baseAttack: 0
+  baseDefense: 0
+  baseSpeed: 0
   healthBar: {fileID: 1593218948}
   expBar: {fileID: 1803278964}
   charInfoText: {fileID: 1793189012}
+  baseSkillsText: {fileID: 0}
   healthButton: {fileID: 1855619467}
   attackButton: {fileID: 1514070548}
   defenseButton: {fileID: 376718897}
   speedButton: {fileID: 1016707713}
   intelligenceButton: {fileID: 1592143943}
+  baseHealthButton: {fileID: 0}
+  baseAttackButton: {fileID: 0}
+  baseDefenseButton: {fileID: 0}
+  baseSpeedButton: {fileID: 0}
   levelNotif: {fileID: 57872377}
   respawnScreen: {fileID: 1300985669}
 --- !u!1001 &234221084903953134

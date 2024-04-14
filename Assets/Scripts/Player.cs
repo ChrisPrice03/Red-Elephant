@@ -33,15 +33,27 @@ public class Player : MonoBehaviour
     public int intelligence = 0;
     int spendablePoints = 0;
 
+    //adding base player points
+    int skillPoints = 10;
+    public int baseHealth = 0;
+    public int baseAttack = 0;
+    public int baseDefense = 0;
+    public int baseSpeed = 0;
+
     //adding GUI
     public HealthBar healthBar;
     public ExpBar expBar;
     public CharInfoText charInfoText;
+    public CharInfoText baseSkillsText;
     public Button healthButton;
     public Button attackButton;
     public Button defenseButton;
     public Button speedButton;
     public Button intelligenceButton;
+    public Button baseHealthButton;
+    public Button baseAttackButton;
+    public Button baseDefenseButton;
+    public Button baseSpeedButton;
     public Image levelNotif;
     public respawnScreen respawnScreen;
 
@@ -53,22 +65,27 @@ public class Player : MonoBehaviour
         expBar.setMaxXP(xpToLevel);
         expBar.setXP(xpSinceLevel);
         charInfoText.updateText(getPlayerInfo());
+        baseSkillsText.updateText(getBasePlayerInfo());
         healthButton.onClick.AddListener(increaseHealthStat);
         attackButton.onClick.AddListener(increaseAttackStat);
         defenseButton.onClick.AddListener(increaseDefenseStat);
         speedButton.onClick.AddListener(increaseSpeedStat);
         intelligenceButton.onClick.AddListener(increaseIntelligenceStat);
+        baseHealthButton.onClick.AddListener(increaseBaseHealthStat);
+        baseAttackButton.onClick.AddListener(increaseBaseAttackStat);
+        baseDefenseButton.onClick.AddListener(increaseBaseDefenseStat);
+        baseSpeedButton.onClick.AddListener(increaseBaseSpeedStat);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow)) {
-            loseHp(20);
-        }
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
-            gainHp(20);
-        }
+        //if (Input.GetKeyDown(KeyCode.DownArrow)) {
+        //    loseHp(20);
+        //}
+        //if (Input.GetKeyDown(KeyCode.UpArrow)) {
+        //    gainHp(20);
+        //}
         if (Input.GetKeyDown(KeyCode.R)) {
             addXp(20);
         }
@@ -82,6 +99,7 @@ public class Player : MonoBehaviour
             interactNearby();
         }
         charInfoText.updateText(getPlayerInfo());
+        baseSkillsText.updateText(getBasePlayerInfo());
     }
 
     //returning a string of player info to be displayed
@@ -97,6 +115,19 @@ public class Player : MonoBehaviour
                 "\nDefense - " + defense + " (-" + (defense) + "damage)" +
                 "\nSpeed - " + speed + " (+" + (speed * 20) + "%)" +
                 "\nIntelligence - " + intelligence;
+    }
+
+    //returning a string of base player info to be displayed
+    string getBasePlayerInfo() {
+        return "Spendable Skill Points: " + skillPoints +
+                "\n" +
+                "\nSkills:" +
+                "\nHealth:" + baseHealth + "/5" +
+                "\nAttack:" + baseAttack + "/5" +
+                "\nDefense:" + baseDefense + "/5" +
+                "\nSpeed:" + baseSpeed + "/5" +
+                "\n" +
+                "\nThese points increase the effectiveness of other skill points on your player";
     }
 
     //updates levelUp speed based on difficulty
@@ -159,20 +190,9 @@ public class Player : MonoBehaviour
         this.checkLevelStatus();
     }
 
-    //function called when a player dies
-    void kill() {
-        respawnScreen.showDeath();
-        //incomplete
-    }
-
-    //function displayed when player dies
-    void showDeath() {
-        //incomplete
-    }
-
     bool checkDeath() {
         if (curHp <= 0) {
-            this.kill();
+            //this.kill();
             return true;
         }
         return false;
@@ -202,7 +222,7 @@ public class Player : MonoBehaviour
             healthBar.setHealth(curHp);
         }
         if (this.checkDeath()) {
-            this.showDeath();
+            //this.showDeath();
         }
     }
 
@@ -258,6 +278,43 @@ public class Player : MonoBehaviour
         if (spendablePoints > 0) {
             spendablePoints--;
             intelligence++;
+        }
+    }
+
+    //base stat functions
+    //stat functions
+
+    //increases health stat
+    public void increaseBaseHealthStat() {
+        if (skillPoints > 0 && baseHealth < 5) {
+            skillPoints--;
+            baseHealth++;
+            //modifyMaxHp((int) (0.2 * maxHp));
+        }
+    }
+
+    //increases attack stat
+    public void increaseBaseAttackStat() {
+        if (skillPoints > 0 && baseAttack < 5) {
+            skillPoints--;
+            baseAttack++;
+            //modifyAttackDamage((int) (0.2 * attackDamage));
+        }
+    }
+
+    //increases defense stat
+    public void increaseBaseDefenseStat() {
+        if (skillPoints > 0 && baseDefense < 5) {
+            skillPoints--;
+            baseDefense++;
+        }
+    }
+
+    //increases speed stat
+    public void increaseBaseSpeedStat() {
+        if (skillPoints > 0 && baseSpeed < 5) {
+            skillPoints--;
+            baseSpeed++;
         }
     }
 
