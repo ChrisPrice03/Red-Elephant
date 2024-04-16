@@ -8,6 +8,7 @@ public class respawnScreen : MonoBehaviour
 {
     public string SceneName;
     public GameObject respawnUI;
+    public GameObject canvas;
     public bool GameisPaused = false;
     public static bool isPaused = false;
     public string s1 = "TitleScreenScene";
@@ -32,6 +33,8 @@ public class respawnScreen : MonoBehaviour
     public void SettingBack() {
         SceneManager.LoadScene(SceneName);
         respawnUI.SetActive(true);
+        canvas.SetActive(false);
+
         Time.timeScale = 0f;
         GameisPaused = true;
         // Outputs the name of the current active Scene.
@@ -42,6 +45,8 @@ public class respawnScreen : MonoBehaviour
     public void ResumeButton() {
 
         respawnUI.SetActive(false);
+        canvas.SetActive(true);
+
         Time.timeScale = 1f;
         GameisPaused = false;
     }
@@ -50,6 +55,8 @@ public class respawnScreen : MonoBehaviour
     public void showDeath()
     {
         respawnUI.SetActive(true);
+        canvas.SetActive(false);
+
         Time.timeScale = 0f;
         GameisPaused = true;
         // Allow this other Button to be pressed when the other Button has been pressed (Scene 2 is loaded)
@@ -61,6 +68,8 @@ public class respawnScreen : MonoBehaviour
     public void Resume() {
         
         respawnUI.SetActive(false);
+        canvas.SetActive(true);
+
         Time.timeScale = 1f;
         GameisPaused = false;
         //SceneManager.LoadScene("CharMoveTest");

@@ -15554,6 +15554,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1685743938498378869, guid: e49afe7c911414da295440a1ea7898d7, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1546085176}
+    - target: {fileID: 1685743938498378869, guid: e49afe7c911414da295440a1ea7898d7, type: 3}
       propertyPath: pauseMenuUI
       value: 
       objectReference: {fileID: 498580546}
@@ -15659,6 +15663,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RespawnUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7775278502345266712, guid: d34fdd072dc8daa4aad361766a54a569, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1546085176}
     - target: {fileID: 8254596613535698315, guid: d34fdd072dc8daa4aad361766a54a569, type: 3}
       propertyPath: m_Pivot.x
       value: 0
