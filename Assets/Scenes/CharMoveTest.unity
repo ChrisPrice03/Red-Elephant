@@ -14643,6 +14643,8 @@ MonoBehaviour:
   attackDamage: 10
   attackRate: 2
   gold: 0
+  curQuests: 0
+  maxQuests: 3
   health: 0
   attack: 0
   defense: 0
@@ -14657,6 +14659,7 @@ MonoBehaviour:
   charInfoText: {fileID: 1793189012}
   baseSkillsText: {fileID: 1083223319}
   goldText: {fileID: 155192167}
+  questText: {fileID: 1430875710}
   healthButton: {fileID: 1855619467}
   attackButton: {fileID: 1514070548}
   defenseButton: {fileID: 376718897}
@@ -16011,6 +16014,8 @@ MonoBehaviour:
   attackDamage: 10
   attackRate: 2
   gold: 0
+  curQuests: 0
+  maxQuests: 3
   health: 0
   attack: 0
   defense: 0
@@ -16025,6 +16030,7 @@ MonoBehaviour:
   charInfoText: {fileID: 1793189012}
   baseSkillsText: {fileID: 0}
   goldText: {fileID: 0}
+  questText: {fileID: 0}
   healthButton: {fileID: 1855619467}
   attackButton: {fileID: 1514070548}
   defenseButton: {fileID: 376718897}

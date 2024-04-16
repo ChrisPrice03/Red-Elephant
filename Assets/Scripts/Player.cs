@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +27,9 @@ public class Player : MonoBehaviour
     public float attackRate = 2f;
     float nextAttackTime = 0f;
     public int gold = 0;
+    public int curQuests = 0;
+    public int maxQuests = 3;
+    string[] quests = new string[3];
 
     //adding individual stat values and spendable points
     public int health = 0;
@@ -47,6 +52,7 @@ public class Player : MonoBehaviour
     public CharInfoText charInfoText;
     public CharInfoText baseSkillsText;
     public CharInfoText goldText;
+    public CharInfoText questText;
     public Button healthButton;
     public Button attackButton;
     public Button defenseButton;
@@ -69,6 +75,7 @@ public class Player : MonoBehaviour
         charInfoText.updateText(getPlayerInfo());
         baseSkillsText.updateText(getBasePlayerInfo());
         goldText.updateText(gold.ToString());
+        questText.updateText(getQuests());
         healthButton.onClick.AddListener(increaseHealthStat);
         attackButton.onClick.AddListener(increaseAttackStat);
         defenseButton.onClick.AddListener(increaseDefenseStat);
@@ -104,6 +111,7 @@ public class Player : MonoBehaviour
         charInfoText.updateText(getPlayerInfo());
         baseSkillsText.updateText(getBasePlayerInfo());
         goldText.updateText(gold.ToString());
+        questText.updateText(getQuests());
     }
 
     //returning a string of player info to be displayed
@@ -132,6 +140,16 @@ public class Player : MonoBehaviour
                 "\nSpeed:" + baseSpeed + "/5" + " (+ " + baseSpeed * 20 + "% effect)" +
                 "\n" +
                 "\nThese points increase the effectiveness of other skill points on your player";
+    }
+
+    //returning a string of quests for the player
+    string getQuests() {
+        if (curQuests == 0) {
+            return "You currently do not have any active quests.";
+        }
+        else {
+            return string.Concat(quests.Take(curQuests + 1));
+        }
     }
 
     //updates levelUp speed based on difficulty
