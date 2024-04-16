@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public int attackDamage = 10;
     public float attackRate = 2f;
     float nextAttackTime = 0f;
+    public int gold = 0;
 
     //adding individual stat values and spendable points
     public int health = 0;
@@ -45,6 +46,7 @@ public class Player : MonoBehaviour
     public ExpBar expBar;
     public CharInfoText charInfoText;
     public CharInfoText baseSkillsText;
+    public CharInfoText goldText;
     public Button healthButton;
     public Button attackButton;
     public Button defenseButton;
@@ -66,6 +68,7 @@ public class Player : MonoBehaviour
         expBar.setXP(xpSinceLevel);
         charInfoText.updateText(getPlayerInfo());
         baseSkillsText.updateText(getBasePlayerInfo());
+        goldText.updateText(gold.ToString());
         healthButton.onClick.AddListener(increaseHealthStat);
         attackButton.onClick.AddListener(increaseAttackStat);
         defenseButton.onClick.AddListener(increaseDefenseStat);
@@ -100,6 +103,7 @@ public class Player : MonoBehaviour
         }
         charInfoText.updateText(getPlayerInfo());
         baseSkillsText.updateText(getBasePlayerInfo());
+        goldText.updateText(gold.ToString());
     }
 
     //returning a string of player info to be displayed
