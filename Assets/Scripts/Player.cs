@@ -147,6 +147,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) {
             addXp(20);
             quests[0].objectiveProgress++;
+            achievements[1].objectiveProgress++;
         }
         if (Time.time >= nextAttackTime) {
             if (Input.GetMouseButtonDown(0)) {
@@ -158,6 +159,7 @@ public class Player : MonoBehaviour
             interactNearby();
         }
         checkQuests();
+        checkAchievements();
         charInfoText.updateText(getPlayerInfo());
         baseSkillsText.updateText(getBasePlayerInfo());
         goldText.updateText(gold.ToString());
@@ -222,7 +224,9 @@ public class Player : MonoBehaviour
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < 5; i++) {
             builder.Append(achievements[i].questString);
-            builder.Append(" (" + achievements[i].objectiveProgress + "/" + achievements[i].objectiveVal + ")\n");
+            if (achievements[i].objectiveVal != -1) {
+                builder.Append(" (" + achievements[i].objectiveProgress + "/" + achievements[i].objectiveVal + ")\n");
+            }
         }
 
         return builder.ToString();
@@ -538,6 +542,44 @@ public class Player : MonoBehaviour
             achievements[i].objectiveType = i;
             achievements[i].objectiveVal = milestones[i, 0];
             achievements[i].objectiveProgress = 0;
+            milestones[i, 0] = 0;
+        }
+    }
+
+    void checkAchievements() {
+        for (int i = 0; i < achievements.Length; i++) {
+            if (achievements[i].objectiveProgress >= achievements[i].objectiveVal && achievements[i].objectiveVal != -1) { //if this achievement was completed
+
+                //rewards
+                addXp(20);
+                gold += 10;
+
+                //adding next achievement
+                StringBuilder builder = new StringBuilder();
+                builder.Append(achievements[i].questString);
+                builder.Append(" (" + achievements[i].objectiveVal + "/" + achievements[i].objectiveVal + ") Done!\n");
+
+                int temp = 0;
+                while (milestones[i, temp++] == 0) {
+                    if (temp == milestones.GetLength(1)) {
+                        temp++;
+                        break;
+                    }
+                }
+                temp--;
+
+                if (temp < milestones.GetLength(1)) {
+                    builder.Append(achievementStrings[i]);
+                    achievements[i].questString = builder.ToString();
+
+                    achievements[i].objectiveVal = milestones[i, temp];
+                    milestones[i, temp] = 0;
+                }
+                else {
+                    achievements[i].questString = builder.ToString();
+                    achievements[i].objectiveVal = -1;
+                }
+            }
         }
     }
 }
