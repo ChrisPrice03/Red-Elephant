@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
         baseDefenseButton.onClick.AddListener(increaseBaseDefenseStat);
         baseSpeedButton.onClick.AddListener(increaseBaseSpeedStat);
         initializeQuests();
-        addQuest("This is a quest", 0, 0);
+        addQuest("This is a quest", 0, 10);
     }
 
     // Update is called once per frame
@@ -120,6 +120,7 @@ public class Player : MonoBehaviour
         //}
         if (Input.GetKeyDown(KeyCode.R)) {
             addXp(20);
+            quests[0].objectiveProgress++;
         }
         if (Time.time >= nextAttackTime) {
             if (Input.GetMouseButtonDown(0)) {
@@ -130,6 +131,7 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(1)) {
             interactNearby();
         }
+        checkQuests();
         charInfoText.updateText(getPlayerInfo());
         baseSkillsText.updateText(getBasePlayerInfo());
         goldText.updateText(gold.ToString());
@@ -180,6 +182,7 @@ public class Player : MonoBehaviour
                     quests[i].objectiveProgress != -1) {
 
                     builder.Append(quests[i].questString);
+                    builder.Append(" (" + quests[i].objectiveProgress + "/" + quests[i].objectiveVal + ")\n");
                 }
             }
 
@@ -434,7 +437,7 @@ public class Player : MonoBehaviour
     //objective type is a number meaning what type of objective (ie time played, mobs killed etc.)
     //objectiveVal is the amount of the type that must be done (ie. 5 minutes, 15 mobs, etc)
     void addQuest(string QuestString, int objectiveType, int objectiveVal) {
-        Debug.Log("Adding Quest");
+        //Debug.Log("Adding Quest");
 
         if (curQuests != maxQuests) {
             for (int i = 0; i < maxQuests; i++) {
@@ -455,4 +458,31 @@ public class Player : MonoBehaviour
         }
     }
 
+    //method for checking if any quests are completed
+    void checkQuests() {
+        for (int i = 0; i < maxQuests; i++) {
+                if (quests[i].questString != null && 
+                    quests[i].objectiveType != -1 && 
+                    quests[i].objectiveVal != -1 && 
+                    quests[i].objectiveProgress != -1) {
+
+                    if (quests[i].objectiveProgress >= quests[i].objectiveVal) {
+                        completeQuest(i);
+                    }
+                }
+            }
+    }
+
+    //method for completing a quest
+    //currently gaining 20 xp and 10 gold per quest
+    void completeQuest(int index) {
+        quests[index].questString = null;
+        quests[index].objectiveType = -1;
+        quests[index].objectiveVal = -1;
+        quests[index].objectiveProgress = -1;
+
+        addXp(20);
+        gold += 10;
+        curQuests--;
+    }
 }
