@@ -46,6 +46,7 @@ public class OutfitChanger : MonoBehaviour
 
     public void SetCurrentOption(int option)
     {
+        currentOption = option;
         bodyPart.sprite = options[option];
     }
 }

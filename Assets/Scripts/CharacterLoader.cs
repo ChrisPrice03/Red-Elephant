@@ -1,14 +1,19 @@
+using System;
 using System.IO;
 using UnityEngine;
+using TMPro;
 
 public class CharacterLoader : MonoBehaviour
 {
     private int currentIndex = 0; // Current index of the file being processed
+    public OutfitChanger[] outfitChangers; // Array of OutfitChanger components
+
+    public TMP_Text CharacterNameText;
 
     // Method to display and apply customizations
-    public void DisplayAndApplyCustomizations()
+    public void DisplayAndApplyCustomizations(int direction)
     {
-        string folderPath = Application.persistentDataPath + "/CustomizedCharacters";
+        string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "SavedCharacters");
 
         if (Directory.Exists(folderPath))
         {
@@ -18,17 +23,21 @@ public class CharacterLoader : MonoBehaviour
             {
                 Debug.Log("Available Customizations:");
 
-                // Apply saved customization for each character
-                ApplySavedCharacterCustomization(files[currentIndex]);
+                // Update currentIndex based on direction
+                currentIndex += direction;
 
-                // Increment currentIndex
-                currentIndex++;
-
-                if(currentIndex >= files.Length)
+                // Ensure currentIndex stays within bounds
+                if (currentIndex < 0)
+                {
+                    currentIndex = files.Length - 1;
+                }
+                else if (currentIndex >= files.Length)
                 {
                     currentIndex = 0;
                 }
 
+                // Apply saved customization for the current character
+                ApplySavedCharacterCustomization(files[currentIndex]);
             }
             else
             {
@@ -41,6 +50,16 @@ public class CharacterLoader : MonoBehaviour
         }
     }
 
+    public void NextCharacter()
+{
+    DisplayAndApplyCustomizations(1);
+}
+
+public void PreviousCharacter()
+{
+    DisplayAndApplyCustomizations(-1);
+}
+
     // Method to apply saved character customization from JSON file
     private void ApplySavedCharacterCustomization(string filePath)
     {
@@ -52,20 +71,29 @@ public class CharacterLoader : MonoBehaviour
             // Deserialize JSON data to CharacterData object
             SaveCharacter.CharacterData savedData = JsonUtility.FromJson<SaveCharacter.CharacterData>(jsonData);
 
-            // Apply saved indices to outfitChangers
-            SpriteDropdown characterCreation = FindObjectOfType<SpriteDropdown>();
-            if (characterCreation != null)
+            // Set character name text
+            if (CharacterNameText != null)
             {
-                for (int i = 0; i < savedData.indices.Length && i < characterCreation.outfitChangers.Count; i++)
+                CharacterNameText.text = savedData.characterName;
+            }
+            else
+            {
+                Debug.LogWarning("CharacterNameText TMP_Text component not assigned.");
+            }
+
+            // Apply saved indices to outfitChangers
+            if (outfitChangers != null && outfitChangers.Length > 0)
+            {
+                for (int i = 0; i < savedData.indices.Length && i < outfitChangers.Length; i++)
                 {
-                    characterCreation.outfitChangers[i].SetCurrentOption(savedData.indices[i]);
+                    outfitChangers[i].SetCurrentOption(savedData.indices[i]);
                 }
 
                 Debug.Log("Character customization applied successfully for: " + savedData.characterName);
             }
             else
             {
-                Debug.LogError("CharacterCustomizationMenu not found.");
+                Debug.LogError("OutfitChangers array not assigned or empty.");
             }
         }
         catch (System.Exception e)
@@ -77,7 +105,7 @@ public class CharacterLoader : MonoBehaviour
     // Method to delete the last saved character customization JSON file
     public void DeleteLastCharacterCustomization()
     {
-        string folderPath = Application.persistentDataPath + "/CustomizedCharacters";
+        string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "SavedCharacters");
 
         if (Directory.Exists(folderPath))
         {

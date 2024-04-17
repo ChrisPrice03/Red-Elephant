@@ -15,12 +15,14 @@ public class SaveCharacter : MonoBehaviour
     {
         public int[] indices;
         public string characterName;
+        
     }
 
     // Method to save character customization to JSON file
     public void SaveCharacterToJson()
     {
-        string folderPath = Application.persistentDataPath + "/CustomizedCharacters";
+        // Define the folder path in the Documents directory
+        string folderPath = @"C:\Users\Ife Ogunbanjo\OneDrive\Documents\SavedCharacters";
 
         // Check if the folder exists, if not, create it
         if (!Directory.Exists(folderPath))
