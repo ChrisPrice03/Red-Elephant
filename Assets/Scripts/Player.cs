@@ -46,10 +46,33 @@ public class Player : MonoBehaviour
     public float attackRate = 2f;
     float nextAttackTime = 0f;
     public int gold = 0;
+
+    //quests and achievements
     public int curQuests = 0;
     public int maxQuests = 3;
     //string[] questStrings = new string[3];
     Quest[] quests = new Quest[3];
+    Quest[] achievements = new Quest[5];
+    //Quest types:
+    //0 = time played
+    //1 = mobs killed
+    //2 = creatures spoken to
+    //3 = damage delt
+    //4 = gold gained
+    int[,] milestones = new int[,] {
+        { 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 1, 5, 10, 20, 30, 50, 75, 100 },
+        { 1, 5, 10, 20, 30, 50, 75, 100 },
+        { 50, 100, 200, 300, 500, 750, 1000, 1500 },
+        { 50, 100, 200, 300, 500, 750, 1000, 1500 }
+    };
+    string[] achievementStrings = new string[5] {
+        "Play for a certain amount of time:",
+        "Kill a certain amount of mobs:",
+        "Speak to a certain number of creatures:",
+        "Deal a certain amount of damage:",
+        "Gain a certain amount of gold:"
+    };
 
     //adding individual stat values and spendable points
     public int health = 0;
@@ -73,6 +96,7 @@ public class Player : MonoBehaviour
     public CharInfoText baseSkillsText;
     public CharInfoText goldText;
     public CharInfoText questText;
+    public CharInfoText achievementText;
     public Button healthButton;
     public Button attackButton;
     public Button defenseButton;
@@ -106,6 +130,8 @@ public class Player : MonoBehaviour
         baseDefenseButton.onClick.AddListener(increaseBaseDefenseStat);
         baseSpeedButton.onClick.AddListener(increaseBaseSpeedStat);
         initializeQuests();
+        populateAchievements();
+        achievementText.updateText(getAchievements());
         addQuest("This is a quest", 0, 10);
     }
 
@@ -136,6 +162,7 @@ public class Player : MonoBehaviour
         baseSkillsText.updateText(getBasePlayerInfo());
         goldText.updateText(gold.ToString());
         questText.updateText(getQuests());
+        achievementText.updateText(getAchievements());
     }
 
     //returning a string of player info to be displayed
@@ -188,6 +215,17 @@ public class Player : MonoBehaviour
 
             return builder.ToString();
         }
+    }
+
+    string getAchievements() {
+        // Create a StringBuilder instance
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < 5; i++) {
+            builder.Append(achievements[i].questString);
+            builder.Append(" (" + achievements[i].objectiveProgress + "/" + achievements[i].objectiveVal + ")\n");
+        }
+
+        return builder.ToString();
     }
 
     //updates levelUp speed based on difficulty
@@ -484,5 +522,22 @@ public class Player : MonoBehaviour
         addXp(20);
         gold += 10;
         curQuests--;
+    }
+
+    void populateAchievements() {
+        milestones[0, 0] = (int) Time.time + (1 * 60);
+        milestones[0, 1] = (int) Time.time + (5 * 60);
+        milestones[0, 2] = (int) Time.time + (15 * 60);
+        milestones[0, 3] = (int) Time.time + (60 * 60);
+        milestones[0, 4] = (int) Time.time + (2 * 60 * 60);
+        milestones[0, 5] = (int) Time.time + (3 * 60 * 60);
+        milestones[0, 6] = (int) Time.time + (5 * 60 * 60);
+        milestones[0, 7] = (int) Time.time + (7 * 60 * 60);
+        for (int i = 0; i < achievements.Length; i++) {
+            achievements[i].questString = achievementStrings[i];
+            achievements[i].objectiveType = i;
+            achievements[i].objectiveVal = milestones[i, 0];
+            achievements[i].objectiveProgress = 0;
+        }
     }
 }
