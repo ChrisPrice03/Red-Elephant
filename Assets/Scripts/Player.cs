@@ -1,9 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Text;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+
+//quest structure
+public struct Quest
+{
+    public string questString;
+    public int objectiveType;
+    public int objectiveVal;
+    public int objectiveProgress;
+
+    // Constructor
+    public Quest(string str, int i1, int i2, int i3)
+    {
+        questString = str;
+        objectiveType = i1;
+        objectiveVal = i2;
+        objectiveProgress = i3;
+    }
+}
 
 public class Player : MonoBehaviour
 {
@@ -29,7 +48,8 @@ public class Player : MonoBehaviour
     public int gold = 0;
     public int curQuests = 0;
     public int maxQuests = 3;
-    string[] quests = new string[3];
+    //string[] questStrings = new string[3];
+    Quest[] quests = new Quest[3];
 
     //adding individual stat values and spendable points
     public int health = 0;
@@ -85,6 +105,8 @@ public class Player : MonoBehaviour
         baseAttackButton.onClick.AddListener(increaseBaseAttackStat);
         baseDefenseButton.onClick.AddListener(increaseBaseDefenseStat);
         baseSpeedButton.onClick.AddListener(increaseBaseSpeedStat);
+        initializeQuests();
+        addQuest("This is a quest", 0, 0);
     }
 
     // Update is called once per frame
@@ -148,7 +170,20 @@ public class Player : MonoBehaviour
             return "You currently do not have any active quests.";
         }
         else {
-            return string.Concat(quests.Take(curQuests + 1));
+            // Create a StringBuilder instance
+            StringBuilder builder = new StringBuilder();
+            builder.Append("(" + curQuests + "/" + maxQuests + ")\n");
+            for (int i = 0; i < maxQuests; i++) {
+                if (quests[i].questString != null && 
+                    quests[i].objectiveType != -1 && 
+                    quests[i].objectiveVal != -1 && 
+                    quests[i].objectiveProgress != -1) {
+
+                    builder.Append(quests[i].questString);
+                }
+            }
+
+            return builder.ToString();
         }
     }
 
@@ -375,14 +410,49 @@ public class Player : MonoBehaviour
     }
 
     //this command is run when the player chooses to interact
-        void interactNearby() {
-            //detecting hit enemies
-            Collider2D[] interactables = Physics2D.OverlapCircleAll(attackPoint.position, interactRange, interactLayer);
+    void interactNearby() {
+        //detecting hit enemies
+        Collider2D[] interactables = Physics2D.OverlapCircleAll(attackPoint.position, interactRange, interactLayer);
 
-            //interacting with the enemies
-            foreach(Collider2D creature in interactables) {
-                creature.GetComponent<TalkingPanda>().interact();
-                //Debug.Log("We hit " + enemy.name);
+        //interacting with the enemies
+        foreach(Collider2D creature in interactables) {
+            creature.GetComponent<TalkingPanda>().interact();
+            //Debug.Log("We hit " + enemy.name);
+        }
+    }
+
+    void initializeQuests() {
+        for (int i = 0; i < maxQuests; i++) {
+            quests[i].questString = null;
+            quests[i].objectiveType = -1;
+            quests[i].objectiveVal = -1;
+            quests[i].objectiveProgress = -1;
+        }
+    }
+
+    //adds a quest if able
+    //objective type is a number meaning what type of objective (ie time played, mobs killed etc.)
+    //objectiveVal is the amount of the type that must be done (ie. 5 minutes, 15 mobs, etc)
+    void addQuest(string QuestString, int objectiveType, int objectiveVal) {
+        Debug.Log("Adding Quest");
+
+        if (curQuests != maxQuests) {
+            for (int i = 0; i < maxQuests; i++) {
+                if (quests[i].questString == null && 
+                    quests[i].objectiveType == -1 && 
+                    quests[i].objectiveVal == -1 && 
+                    quests[i].objectiveProgress == -1) {
+                    
+                    quests[i].questString = QuestString;
+                    quests[i].objectiveType = objectiveType;
+                    quests[i].objectiveVal = objectiveVal;
+                    quests[i].objectiveProgress = 0;
+
+                    curQuests++;
+                    break;
+                }
             }
         }
+    }
+
 }
