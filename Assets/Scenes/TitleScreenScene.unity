@@ -375,8 +375,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9664425953a0d4e6a9b80fa801c494ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: CharMoveTest
+  SceneName: SinglePlayerScene
   pauseMenuUI: {fileID: 0}
+  canvas: {fileID: 0}
   GameisPaused: 0
   s1: TitleScreenScene
 --- !u!1 &572492384
@@ -1000,6 +1001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: MultiPlayerScene
   pauseMenuUI: {fileID: 0}
+  canvas: {fileID: 0}
   GameisPaused: 0
   s1: TitleScreenScene
 --- !u!1 &907661385
@@ -1480,6 +1482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: SettingScene
   pauseMenuUI: {fileID: 0}
+  canvas: {fileID: 0}
   GameisPaused: 0
   s1: TitleScreenScene
 --- !u!1 &1538211838
