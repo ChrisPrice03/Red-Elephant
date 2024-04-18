@@ -209,7 +209,7 @@ public class Player : MonoBehaviour
         else {
             // Create a StringBuilder instance
             StringBuilder builder = new StringBuilder();
-            builder.Append("(" + curQuests + "/" + maxQuests + ")\n");
+            builder.Append("(" + curQuests + "/" + maxQuests + ")\n-- Each Quest rewards 10 gold and 20 exp --\n");
             for (int i = 0; i < maxQuests; i++) {
                 if (quests[i].questString != null && 
                     quests[i].objectiveType != -1 && 

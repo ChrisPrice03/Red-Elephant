@@ -34,7 +34,7 @@ public class TalkingPanda : MonoBehaviour
 
     //the determining exp
     public Transform center;
-    public float xpRange = 1f;
+    public float xpRange = 2f;
     public LayerMask playerLayer;
 
     public int maxHealth = 100;
