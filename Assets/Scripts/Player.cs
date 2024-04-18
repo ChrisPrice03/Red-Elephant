@@ -13,6 +13,7 @@ public struct Quest
     public int objectiveType;
     public int objectiveVal;
     public int objectiveProgress;
+    public int startingVal;
 
     // Constructor
     public Quest(string str, int i1, int i2, int i3)
@@ -21,6 +22,7 @@ public struct Quest
         objectiveType = i1;
         objectiveVal = i2;
         objectiveProgress = i3;
+        startingVal = 0;
     }
 }
 
@@ -136,7 +138,7 @@ public class Player : MonoBehaviour
         initializeQuests();
         populateAchievements();
         achievementText.updateText(getAchievements());
-        addQuest("This is a quest", 0, 10);
+        //addQuest("This is a quest", 0, 10);
     }
 
     // Update is called once per frame
@@ -150,8 +152,8 @@ public class Player : MonoBehaviour
         //}
         if (Input.GetKeyDown(KeyCode.R)) {
             addXp(20);
-            quests[0].objectiveProgress++;
-            achievements[1].objectiveProgress++;
+            //quests[0].objectiveProgress++;
+            //achievements[1].objectiveProgress++;
         }
         if (Time.time >= nextAttackTime) {
             if (Input.GetMouseButtonDown(0)) {
@@ -215,7 +217,13 @@ public class Player : MonoBehaviour
                     quests[i].objectiveProgress != -1) {
 
                     builder.Append(quests[i].questString);
-                    builder.Append(" (" + quests[i].objectiveProgress + "/" + quests[i].objectiveVal + ")\n");
+
+                    if (quests[i].objectiveType == 0) {
+                        builder.Append(" (" + FormatTime(quests[i].objectiveProgress) + "/" + FormatTime(quests[i].objectiveVal) + ")\n");
+                    }
+                    else {
+                        builder.Append(" (" + quests[i].objectiveProgress + "/" + quests[i].objectiveVal + ")\n");
+                    }
                 }
             }
 
@@ -509,7 +517,7 @@ public class Player : MonoBehaviour
     //adds a quest if able
     //objective type is a number meaning what type of objective (ie time played, mobs killed etc.)
     //objectiveVal is the amount of the type that must be done (ie. 5 minutes, 15 mobs, etc)
-    void addQuest(string QuestString, int objectiveType, int objectiveVal) {
+    public void addQuest(string QuestString, int objectiveType, int objectiveVal) {
         //Debug.Log("Adding Quest");
 
         if (curQuests != maxQuests) {
@@ -523,6 +531,7 @@ public class Player : MonoBehaviour
                     quests[i].objectiveType = objectiveType;
                     quests[i].objectiveVal = objectiveVal;
                     quests[i].objectiveProgress = 0;
+                    quests[i].startingVal = objectiveStats[objectiveType];
 
                     curQuests++;
                     break;
@@ -538,6 +547,8 @@ public class Player : MonoBehaviour
                     quests[i].objectiveType != -1 && 
                     quests[i].objectiveVal != -1 && 
                     quests[i].objectiveProgress != -1) {
+
+                    quests[i].objectiveProgress = objectiveStats[quests[i].objectiveType] - quests[i].startingVal;    
 
                     if (quests[i].objectiveProgress >= quests[i].objectiveVal) {
                         completeQuest(i);

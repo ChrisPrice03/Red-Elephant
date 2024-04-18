@@ -8,16 +8,29 @@ public class TalkingPanda : MonoBehaviour
     //textbox
     public GameObject textbox;
     public CharInfoText speech;
-    public string[] dialogueOptions = {"Hi there!",
-                                                   "How are you?",
-                                                   "Nice weather today!",
-                                                   "What's up?",
-                                                   "Have a good day!",
-                                                   "Good morning!",
-                                                   "How's it going?",
-                                                   "Lovely to see you!",
-                                                   "Take care!",
-                                                   "See you later!"};
+    public string[] dialogueOptions = {
+        "Hi there!",
+        "How are you?",
+        "Nice weather today!",
+        "What's up?",
+        "Have a good day!",
+        "Good morning!",
+        "How's it going?",
+        "Lovely to see you!",
+        "Take care!",
+        "See you later!"
+    };
+
+    //for questing
+    string[] questStrings = new string[5] {
+        "Play for a certain amount of time:",
+        "Kill a certain amount of mobs:",
+        "Speak to a certain number of creatures:",
+        "Deal a certain amount of damage:",
+        "Gain a certain amount of gold:"
+    };
+    private System.Random random = new System.Random();
+
 
     //the determining exp
     public Transform center;
@@ -86,6 +99,7 @@ public class TalkingPanda : MonoBehaviour
     public void interact() {
         //Debug.Log("Interacted with me!");
         speech.updateText(SelectRandomDialogue());
+        giveQuest();
         textbox.SetActive(true);
         StartCoroutine(HideAfterDelay());
     }
@@ -125,5 +139,39 @@ public class TalkingPanda : MonoBehaviour
 
         // Retrieve the selected dialogue
         return dialogueOptions[randomIndex];
+    }
+
+    void giveQuest() {
+        //detecting nearby players
+        Collider2D[] nearbyPlayers = Physics2D.OverlapCircleAll(center.position, xpRange, playerLayer);
+
+        //attacking
+        foreach(Collider2D player in nearbyPlayers) {
+            int randomNumber = random.Next(0, 5);
+
+            int randomVal = 5;
+            switch (randomNumber) {
+                case 0:
+                    randomVal = random.Next(1 * 60, 30 * 60);
+                    break;
+                case 1:
+                    randomVal = random.Next(5, 15);
+                    break;
+                case 2:
+                    randomVal = random.Next(5, 15);
+                    break;
+                case 3:
+                    randomVal = random.Next(100, 1000);
+                    break;
+                case 4:
+                    randomVal = random.Next(50, 200);
+                    break;
+                default:
+                    break;
+            }
+
+            player.GetComponent<Player>().addQuest(questStrings[randomNumber], randomNumber, randomVal);
+            //player.GetComponent<Player>().loseHp(attackDamage);
+        }
     }
 }
