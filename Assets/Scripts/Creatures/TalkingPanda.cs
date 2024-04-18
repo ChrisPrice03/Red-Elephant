@@ -105,6 +105,7 @@ public class TalkingPanda : MonoBehaviour
         //adding xp
         foreach(Collider2D player in nearbyPlayers) {
                 player.GetComponent<Player>().addXp(xpVal);
+                player.GetComponent<Player>().objectiveStats[1]++;
         }
 
         GetComponent<Collider2D>().enabled = false;

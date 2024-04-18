@@ -60,12 +60,15 @@ public class Player : MonoBehaviour
     //3 = damage delt
     //4 = gold gained
     int[,] milestones = new int[,] {
-        { 0, 0, 0, 0, 0, 0, 0, 0 },
+        { (1 * 60), (5 * 60), (15 * 60), (60 * 60), (2 * 60 * 60),
+            (3 * 60 * 60), (5 * 60 * 60), (7 * 60 * 60) },
         { 1, 5, 10, 20, 30, 50, 75, 100 },
         { 1, 5, 10, 20, 30, 50, 75, 100 },
-        { 50, 100, 200, 300, 500, 750, 1000, 1500 },
+        { 100, 500, 750, 1000, 1500, 2000, 2500, 4000 },
         { 50, 100, 200, 300, 500, 750, 1000, 1500 }
     };
+
+
     string[] achievementStrings = new string[5] {
         "Play for a certain amount of time:",
         "Kill a certain amount of mobs:",
@@ -73,6 +76,7 @@ public class Player : MonoBehaviour
         "Deal a certain amount of damage:",
         "Gain a certain amount of gold:"
     };
+    public int[] objectiveStats = new int[5];
 
     //adding individual stat values and spendable points
     public int health = 0;
@@ -225,11 +229,34 @@ public class Player : MonoBehaviour
         for (int i = 0; i < 5; i++) {
             builder.Append(achievements[i].questString);
             if (achievements[i].objectiveVal != -1) {
-                builder.Append(" (" + achievements[i].objectiveProgress + "/" + achievements[i].objectiveVal + ")\n");
+                if (i == 0) {
+                    builder.Append(" (" + FormatTime(achievements[i].objectiveProgress) + "/" + FormatTime(achievements[i].objectiveVal) + ")\n");
+                }
+                else {
+                    builder.Append(" (" + achievements[i].objectiveProgress + "/" + achievements[i].objectiveVal + ")\n");
+                }
             }
         }
 
         return builder.ToString();
+    }
+
+    public static string FormatTime(int totalSeconds)
+    {
+        // Calculate hours, minutes, and seconds
+        int hours = totalSeconds / 3600;
+        int minutes = (totalSeconds % 3600) / 60;
+        int seconds = totalSeconds % 60;
+
+        // Build the formatted string
+        string formattedTime = "";
+        if (hours > 0)
+        {
+            formattedTime += hours + "h ";
+        }
+        formattedTime += minutes + "m";
+
+        return formattedTime;
     }
 
     //updates levelUp speed based on difficulty
@@ -438,14 +465,17 @@ public class Player : MonoBehaviour
             Creature creature = enemy.GetComponent<Creature>();
                 if (creature != null) {
                     creature.TakeDamage(attackDamage);
+                    objectiveStats[3] += attackDamage;
                 } else {
                     TalkingPanda tp = enemy.GetComponent<TalkingPanda>();
                     if (tp != null) {
                         tp.TakeDamage(attackDamage);
+                        objectiveStats[3] += attackDamage;
                     } else {
                         HostilePanda hp = enemy.GetComponent<HostilePanda>();
                              if (hp != null) {
                                  hp.TakeDamage(attackDamage);
+                                 objectiveStats[3] += attackDamage;
                              } else {
                                 // Handle the case where the enemy is neither a Creature nor an Interactable
                              }
@@ -462,6 +492,7 @@ public class Player : MonoBehaviour
         //interacting with the enemies
         foreach(Collider2D creature in interactables) {
             creature.GetComponent<TalkingPanda>().interact();
+            objectiveStats[2] += 1;
             //Debug.Log("We hit " + enemy.name);
         }
     }
@@ -525,18 +556,11 @@ public class Player : MonoBehaviour
 
         addXp(20);
         gold += 10;
+        objectiveStats[4] += 10;
         curQuests--;
     }
 
     void populateAchievements() {
-        milestones[0, 0] = (int) Time.time + (1 * 60);
-        milestones[0, 1] = (int) Time.time + (5 * 60);
-        milestones[0, 2] = (int) Time.time + (15 * 60);
-        milestones[0, 3] = (int) Time.time + (60 * 60);
-        milestones[0, 4] = (int) Time.time + (2 * 60 * 60);
-        milestones[0, 5] = (int) Time.time + (3 * 60 * 60);
-        milestones[0, 6] = (int) Time.time + (5 * 60 * 60);
-        milestones[0, 7] = (int) Time.time + (7 * 60 * 60);
         for (int i = 0; i < achievements.Length; i++) {
             achievements[i].questString = achievementStrings[i];
             achievements[i].objectiveType = i;
@@ -547,17 +571,25 @@ public class Player : MonoBehaviour
     }
 
     void checkAchievements() {
+        objectiveStats[0] = (int) Time.time;
         for (int i = 0; i < achievements.Length; i++) {
+            achievements[i].objectiveProgress = objectiveStats[i];
             if (achievements[i].objectiveProgress >= achievements[i].objectiveVal && achievements[i].objectiveVal != -1) { //if this achievement was completed
 
                 //rewards
                 addXp(20);
                 gold += 10;
+                objectiveStats[4] += 10;
 
                 //adding next achievement
                 StringBuilder builder = new StringBuilder();
                 builder.Append(achievements[i].questString);
-                builder.Append(" (" + achievements[i].objectiveVal + "/" + achievements[i].objectiveVal + ") Done!\n");
+                if (i == 0) {
+                    builder.Append(" (" + FormatTime(achievements[i].objectiveProgress) + "/" + FormatTime(achievements[i].objectiveVal) + ") Done!\n");
+                }
+                else {
+                    builder.Append(" (" + achievements[i].objectiveProgress + "/" + achievements[i].objectiveVal + ") Done!\n");
+                }
 
                 int temp = 0;
                 while (milestones[i, temp++] == 0) {
