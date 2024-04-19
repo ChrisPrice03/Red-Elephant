@@ -8,21 +8,25 @@ public class terrainGeneration : MonoBehaviour
     public Sprite grassBlock;
     public Sprite dirtBlock;
     public Sprite chest;
+    public Sprite portalSprite;
 
     public Loot loot_1;
     public Loot loot_2;
     public Loot loot_3;
     public GameObject lootPre;
+    public GameObject fixedPortalObject;
 
-    
     public float noiseFreq = 0.08f;
     public float terrainFreq = .04f;
     public float heightMult = 25f;
     public int heightAdd = 35;
     public float seed;
+    
     public Texture2D noiseTexture; 
     public List<Vector2> worldTiles = new List<Vector2>();
     public List<GameObject> worldTileObjects = new List<GameObject>();
+
+    
 
     public void Start() 
     {
@@ -48,10 +52,15 @@ public class terrainGeneration : MonoBehaviour
                 if (noiseTexture.GetPixel(x,y).r > 0.2f) {
                     if (!worldTiles.Contains(new Vector2Int(x,y)) && x >= 0 && x <= worldSize && y >= 0 && y <= worldSize) {
                         int chestChance = Random.Range(0, 101);
+                        int portalChance = Random.Range(0, 101);
 
                         if (y > height - 1) {
                             if (chestChance < 5) {
                                 tileSprite = chest;
+                            }
+                            
+                            if (portalChance < 3) { // Adjust the chance as needed
+                                SpawnPortal(x, y);
                             }
                         }
                         GameObject newTile = new GameObject();
@@ -62,6 +71,7 @@ public class terrainGeneration : MonoBehaviour
                         newTile.GetComponent<BoxCollider2D>().size = Vector2.one;
 
                         newTile.name = tileSprite.name;
+
 
                         if (tileSprite == chest) {
                             newTile.AddComponent<LootBag>();
@@ -75,6 +85,8 @@ public class terrainGeneration : MonoBehaviour
                         worldTiles.Add(newTile.transform.position - (Vector3.one * .5f));
                         
                         worldTileObjects.Add(newTile);
+
+                        
                     }
 
                     
@@ -82,6 +94,31 @@ public class terrainGeneration : MonoBehaviour
                 
             }
         }
+    }
+
+    private void SpawnPortal(int x, int y)
+    {
+        GameObject portalObject = new GameObject("Portal");
+        portalObject.tag = "enter shop portal";
+        portalObject.transform.position = new Vector3(x + 5f, y + 5f, 0); // Adjust the Z position if needed
+        portalObject.transform.parent = transform;
+
+        // Add SpriteRenderer component and assign portal sprite
+        SpriteRenderer portalRenderer = portalObject.AddComponent<SpriteRenderer>();
+        portalRenderer.sprite = portalSprite; // Use the assigned portal sprite
+
+        // Add BoxCollider2D for interaction
+        BoxCollider2D portalCollider = portalObject.AddComponent<BoxCollider2D>();
+        portalCollider.isTrigger = true;
+
+        // Add functionality directly to the portal GameObject
+        // portalObject.AddComponent<PortalLogic>();
+
+
+        PortalLogic portalLogic = portalObject.AddComponent<PortalLogic>();
+    // Assign the destination portal
+
+        portalLogic.destinationPortal = fixedPortalObject;
     }
 
     public void OpenLootBox(int x, int y) {

@@ -73,6 +73,7 @@
     <Compile Include="Assets/Scripts/DifficultySO.cs" />
     <Compile Include="Assets/Scripts/CameraZoom.cs" />
     <Compile Include="Assets/Scenes/SettingsUI/Scripts/Options/QualityLevelOption.cs" />
+    <Compile Include="Assets/ExitStore.cs" />
     <Compile Include="Assets/Scripts/Settings.cs" />
     <Compile Include="Assets/ApplyDifficulty.cs" />
     <Compile Include="Assets/Scenes/SettingsUI/Scripts/Core/KeyboardMouseInput.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Assets/Scripts/PauseScript.cs" />
     <Compile Include="Assets/Scripts/OutfitChanger.cs" />
     <Compile Include="Assets/Audio.cs" />
+    <Compile Include="Assets/Scripts/PortalLogic.cs" />
     <Compile Include="Assets/Scripts/Return.cs" />
     <Compile Include="Assets/LootBag.cs" />
     <Compile Include="Assets/Scenes/SettingsUI/Scripts/Manager/GraphicSettingSaveManager.cs" />
