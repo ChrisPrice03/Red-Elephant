@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Audio.unity
     guid: b158988548d2f984996f08b311c00c14
+  - enabled: 1
+    path: Assets/Scenes/TradingScene.unity
+    guid: e61b899fdbc0f47ae928960cadf087d8
   m_configObjects: {}
