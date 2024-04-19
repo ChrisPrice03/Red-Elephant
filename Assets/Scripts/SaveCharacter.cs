@@ -22,7 +22,7 @@ public class SaveCharacter : MonoBehaviour
     public void SaveCharacterToJson()
     {
         // Define the folder path in the Documents directory
-        string folderPath = @"C:\Users\Ife Ogunbanjo\OneDrive\Documents\SavedCharacters";
+        string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "SavedGames", "NewGame", "Character");
 
         // Check if the folder exists, if not, create it
         if (!Directory.Exists(folderPath))
