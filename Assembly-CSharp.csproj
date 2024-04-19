@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\PauseScript.cs" />
     <Compile Include="Assets\Scripts\OutfitChanger.cs" />
     <Compile Include="Assets\Audio.cs" />
+    <Compile Include="Assets\Scripts\ScoreBoard.cs" />
     <Compile Include="Assets\Scripts\Return.cs" />
     <Compile Include="Assets\LootBag.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Manager\GraphicSettingSaveManager.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Core\XML\XmlManager.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\CharacterUpdate.cs" />
+    <Compile Include="Assets\Scripts\MusicManager.cs" />
     <Compile Include="Assets\Multiplayer-Chat-using-Netcode-for-Gameobjects-with-Unity-main\Scripts\ChatMessage.cs" />
     <Compile Include="Assets\Scripts\ToStore.cs" />
     <Compile Include="Assets\RevertHome.cs" />
@@ -114,6 +116,7 @@
     <Compile Include="Assets\Scripts\CharacterLoader.cs" />
     <Compile Include="Assets\Scripts\ReturnToPage.cs" />
     <Compile Include="Assets\Scripts\LevelExit.cs" />
+    <Compile Include="Assets\Scripts\PlayerScore.cs" />
     <Compile Include="Assets\Voicelines\VoiceLinePlayer.cs" />
     <Compile Include="Assets\Scripts\Creatures\FriendlyPanda.cs" />
     <Compile Include="Assets\Scripts\Items.cs" />
