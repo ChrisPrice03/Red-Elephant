@@ -13,11 +13,6 @@ public class ButtonPressScript : MonoBehaviour
     public static bool isPaused = false;
     public string s1 = "TitleScreenScene";
     
-    public void DeleteAll() {
-        SaveSystem.DelData();
-    }
-
-
     // Load the Scene when this Button is pressed
     public void LoadScene()
     {

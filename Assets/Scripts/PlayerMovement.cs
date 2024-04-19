@@ -53,9 +53,7 @@ public class PlayerMovement : MonoBehaviour
         if (hit) {
             terrainGenerator.OpenLootBox(mousePos.x, mousePos.y);
         }
-        if((mousePos.x == -106 || mousePos.x == -107) && (mousePos.y == -80 || mousePos.y == -81)) {
-            terrainGenerator.LoadGame();
-        }
+        
         
     }
 }
