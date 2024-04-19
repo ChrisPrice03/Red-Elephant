@@ -92,7 +92,6 @@
     <Compile Include="Assets\Scripts\PauseScript.cs" />
     <Compile Include="Assets\Scripts\OutfitChanger.cs" />
     <Compile Include="Assets\Audio.cs" />
-    <Compile Include="Assets\Scripts\PlayerName.cs" />
     <Compile Include="Assets\Scripts\Return.cs" />
     <Compile Include="Assets\LootBag.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Manager\GraphicSettingSaveManager.cs" />
@@ -109,7 +108,6 @@
     <Compile Include="Assets\Scripts\CharacterLoader.cs" />
     <Compile Include="Assets\Scripts\ReturnToPage.cs" />
     <Compile Include="Assets\Scripts\LevelExit.cs" />
-    <Compile Include="Assets\Scripts\PlayerScore.cs" />
     <Compile Include="Assets\Scripts\Creatures\FriendlyPanda.cs" />
     <Compile Include="Assets\Scripts\Items.cs" />
     <Compile Include="Assets\Scripts\ExpBar.cs" />
