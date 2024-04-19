@@ -5,10 +5,17 @@ using TMPro;
 public class PlayerName : MonoBehaviour
 {
     public TMP_Text userNameText;
+    private string fileName = "Character.json";
+
+    [System.Serializable]
+    public class CharacterData
+    {
+        public string userName;
+    }
 
     public void ReadUsername()
     {
-        string filePath = @"C:\Users\Ife Ogunbanjo\OneDrive\Documents\SavedGames\NewGame\Character.json";
+        string filePath = Path.Combine(Application.persistentDataPath, "SavedGames", "NewGame", fileName);
 
         if (File.Exists(filePath))
         {
@@ -16,10 +23,10 @@ public class PlayerName : MonoBehaviour
             string json = File.ReadAllText(filePath);
 
             // Deserialize the JSON data into CharacterData object
-            CharacterChosen.CharactersData charactersData = JsonUtility.FromJson<CharacterChosen.CharactersData>(json);
+            CharacterData characterData = JsonUtility.FromJson<CharacterData>(json);
 
             // Access the username
-            string username = charactersData.userName;
+            string username = characterData.userName;
 
             Debug.Log("Username: " + username);
 
