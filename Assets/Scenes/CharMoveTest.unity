@@ -13028,7 +13028,7 @@ MonoBehaviour:
   baseSkillsText: {fileID: 1083223319}
   goldText: {fileID: 155192167}
   questText: {fileID: 1430875710}
-  achievementText: {fileID: 0}
+  achievementText: {fileID: 1330007878}
   healthButton: {fileID: 1855619467}
   attackButton: {fileID: 1514070548}
   defenseButton: {fileID: 376718897}
