@@ -1898,7 +1898,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -481, y: 0}
+  m_AnchoredPosition: {x: -492, y: 0}
   m_SizeDelta: {x: 960, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &474099610
@@ -2282,7 +2282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9664425953a0d4e6a9b80fa801c494ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: HUD
+  SceneName: CharMoveTest
   pauseMenuUI: {fileID: 0}
   canvas: {fileID: 0}
   GameisPaused: 0
@@ -3797,7 +3797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9664425953a0d4e6a9b80fa801c494ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: SettingScene
+  SceneName: SinglePlayerScene
   pauseMenuUI: {fileID: 0}
   canvas: {fileID: 0}
   GameisPaused: 0
