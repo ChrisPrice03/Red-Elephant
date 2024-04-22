@@ -155,6 +155,13 @@ public class Player : MonoBehaviour
             //quests[0].objectiveProgress++;
             //achievements[1].objectiveProgress++;
         }
+        if (Input.GetKeyDown(KeyCode.G)) {
+            addXp(10000);
+            modifyMaxHp(10000);
+            gainHp(10000);
+            //quests[0].objectiveProgress++;
+            //achievements[1].objectiveProgress++;
+        }
         if (Time.time >= nextAttackTime) {
             if (Input.GetMouseButtonDown(0)) {
                 attackNearby();
