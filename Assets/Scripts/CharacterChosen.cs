@@ -27,8 +27,12 @@ public class CharacterChosen : MonoBehaviour
             Directory.CreateDirectory(folderPath);
         }
 
+<<<<<<< HEAD
 
         // Create an instance of CharacterData
+=======
+        // Create an instance of CharactersData
+>>>>>>> parent of a1bd4e6 (Merge branch 'main' into FixBranch2)
         CharactersData data = new CharactersData();
 
         // Get indices from the characterCreationMenu

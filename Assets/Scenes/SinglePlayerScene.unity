@@ -281,7 +281,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9664425953a0d4e6a9b80fa801c494ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   SceneName: CharMoveTest
+=======
+  SceneName: New Character Customization
+>>>>>>> parent of a1bd4e6 (Merge branch 'main' into FixBranch2)
   pauseMenuUI: {fileID: 0}
   canvas: {fileID: 0}
   GameisPaused: 0
