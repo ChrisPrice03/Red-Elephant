@@ -175,19 +175,35 @@ MonoBehaviour:
   curHp: 100
   attackDamage: 10
   attackRate: 2
+  gold: 0
+  curQuests: 0
+  maxQuests: 3
+  objectiveStats: 0000000000000000000000000000000000000000
   health: 0
   attack: 0
   defense: 0
   speed: 0
   intelligence: 0
+  baseHealth: 0
+  baseAttack: 0
+  baseDefense: 0
+  baseSpeed: 0
   healthBar: {fileID: 50477791}
   expBar: {fileID: 77777413}
   charInfoText: {fileID: 647007834}
+  baseSkillsText: {fileID: 0}
+  goldText: {fileID: 0}
+  questText: {fileID: 0}
+  achievementText: {fileID: 0}
   healthButton: {fileID: 1624611819}
   attackButton: {fileID: 739493241}
   defenseButton: {fileID: 1759765760}
   speedButton: {fileID: 644847124}
   intelligenceButton: {fileID: 466435354}
+  baseHealthButton: {fileID: 0}
+  baseAttackButton: {fileID: 0}
+  baseDefenseButton: {fileID: 0}
+  baseSpeedButton: {fileID: 0}
   levelNotif: {fileID: 658492050}
   respawnScreen: {fileID: 503061091}
 --- !u!114 &9088686
@@ -907,19 +923,35 @@ MonoBehaviour:
   curHp: 100
   attackDamage: 10
   attackRate: 2
+  gold: 0
+  curQuests: 0
+  maxQuests: 3
+  objectiveStats: 0000000000000000000000000000000000000000
   health: 0
   attack: 0
   defense: 0
   speed: 0
   intelligence: 0
+  baseHealth: 0
+  baseAttack: 0
+  baseDefense: 0
+  baseSpeed: 0
   healthBar: {fileID: 50477791}
   expBar: {fileID: 77777413}
   charInfoText: {fileID: 647007834}
+  baseSkillsText: {fileID: 0}
+  goldText: {fileID: 0}
+  questText: {fileID: 0}
+  achievementText: {fileID: 0}
   healthButton: {fileID: 1624611819}
   attackButton: {fileID: 739493241}
   defenseButton: {fileID: 1759765760}
   speedButton: {fileID: 644847124}
   intelligenceButton: {fileID: 466435354}
+  baseHealthButton: {fileID: 0}
+  baseAttackButton: {fileID: 0}
+  baseDefenseButton: {fileID: 0}
+  baseSpeedButton: {fileID: 0}
   levelNotif: {fileID: 658492050}
   respawnScreen: {fileID: 503061091}
 --- !u!114 &190994390
