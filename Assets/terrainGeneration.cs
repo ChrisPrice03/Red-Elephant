@@ -9,8 +9,6 @@ public class terrainGeneration : MonoBehaviour
     public Sprite dirtBlock;
     public Sprite chest;
 
-    public Sprite DungTP;
-
     public Loot loot_1;
     public Loot loot_2;
     public Loot loot_3;
@@ -26,11 +24,7 @@ public class terrainGeneration : MonoBehaviour
     public List<Vector2> worldTiles = new List<Vector2>();
     public List<GameObject> worldTileObjects = new List<GameObject>();
 
-    public Player player;
-    public void Start() {
-        LoadGame();
-    }
-    public void LoadGame() 
+    public void Start() 
     {
         SaveData data = SaveSystem.loadPlayer();
         if (data == null) {
@@ -61,18 +55,38 @@ public class terrainGeneration : MonoBehaviour
             seed = data.seed;
             GenerateNoiseTexture();
             GenerateTerrain();
+            GetCharacter getCharacter = FindObjectOfType<GetCharacter>();
+            if (getCharacter != null)
+            {
+                getCharacter.DisplayAndApplyCustomizations();
+            }
+            else
+            {
+                Debug.LogError("GetCharacter script not found in the scene!");
+            }
         }
         
     }
 
     public void SaveGame() {
         SaveSystem.SavePlayer(player, this);
+        PlayerScore playerScore = FindObjectOfType<PlayerScore>();
+
+        // Ensure that playerScore is not null
+        if (playerScore != null)
+        {
+            // Now you can call the instance method SaveScoreJson() on the playerScore object
+            playerScore.SaveScoreJson();
+        }
+        else
+        {
+            Debug.LogError("PlayerScore component not found.");
+        }
     }
 
     
     public void GenerateTerrain() 
     {
-        bool tpPlace = false; 
         for (int x = 0; x < worldSize; x++) 
         {
             float height = Mathf.PerlinNoise((x+seed) * terrainFreq, (seed) * terrainFreq) * heightMult + heightAdd;
@@ -88,16 +102,8 @@ public class terrainGeneration : MonoBehaviour
                 if (noiseTexture.GetPixel(x,y).r > 0.2f) {
                     if (!worldTiles.Contains(new Vector2Int(x,y)) && x >= 0 && x <= worldSize && y >= 0 && y <= worldSize) {
                         int chestChance = Random.Range(0, 101);
-                        int tPChance = Random.Range(0, 101);
+
                         if (y > height - 1) {
-                            if (tPChance < 5) {
-                                if (tpPlace == false) {
-                                    tileSprite = DungTP;
-                                    tpPlace = true;
-                                }
-                            }
-                        }
-                        if ((y + 1) > height) {
                             if (chestChance < 5) {
                                 tileSprite = chest;
                             }
@@ -136,21 +142,11 @@ public class terrainGeneration : MonoBehaviour
         
         if (worldTiles.Contains(new Vector2Int(x,y)) && x >= 0 && x <= worldSize && y >= 0 && y <= worldSize) {
             Debug.Log(worldTileObjects[worldTiles.IndexOf(new Vector2(x,y))].name);
-            
             if(worldTileObjects[worldTiles.IndexOf(new Vector2(x,y))].name == chest.name) {
                 worldTileObjects[worldTiles.IndexOf(new Vector2(x,y))].GetComponent<LootBag>().InstantiateLoot(new Vector2(x,y));
-                Destroy(worldTileObjects[worldTiles.IndexOf(new Vector2(x,y))]);
-            }
-            if(worldTileObjects[worldTiles.IndexOf(new Vector2(x,y))].name == DungTP.name) {
-                SaveGame();
-                Vector3 position;
-                position.x = -107;
-                position.y = -101;
-                position.z = 0;
-                player.transform.position = position;
-                
             }
             
+            Destroy(worldTileObjects[worldTiles.IndexOf(new Vector2(x,y))]);
         }
 
     }

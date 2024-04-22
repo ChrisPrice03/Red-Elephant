@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Creature : MonoBehaviour
 {
     //the determining exp
@@ -26,6 +27,8 @@ public class Creature : MonoBehaviour
 
     //animations
     public Animator animator;
+
+    [SerializeField] private AudioClip damageSound;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +59,7 @@ public class Creature : MonoBehaviour
 
     //allows the creature to take damage
     public void TakeDamage(int damage) {
+        AudioSource.PlayClipAtPoint(damageSound, transform.position, 1f);
         if (currentHealth - damage <= 0) {
                     currentHealth = 0;
                     healthBar.setHealth(0);
@@ -74,7 +78,6 @@ public class Creature : MonoBehaviour
         //adding xp
         foreach(Collider2D player in nearbyPlayers) {
                 player.GetComponent<Player>().addXp(xpVal);
-                player.GetComponent<Player>().objectiveStats[1]++;
         }
 
         GetComponent<Collider2D>().enabled = false;
