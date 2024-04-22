@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.IO;
 using TMPro;
 using System;
@@ -26,7 +27,7 @@ public class CharacterChosen : MonoBehaviour
             Directory.CreateDirectory(folderPath);
         }
 
-        // Create an instance of CharactersData
+        // Create an instance of CharacterData
         CharactersData data = new CharactersData();
 
         // Get indices from the characterCreationMenu
