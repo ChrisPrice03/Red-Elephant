@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         
         if((mousePos.x == -106 || mousePos.x == -107) && (mousePos.y == -80 || mousePos.y == -81)) 
         {
+            Debug.Log("TP Intit");
             terrainGenerator.LoadGame();
         }
 

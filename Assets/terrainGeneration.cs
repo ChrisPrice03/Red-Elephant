@@ -61,6 +61,7 @@ public class terrainGeneration : MonoBehaviour
             seed = data.seed;
             GenerateNoiseTexture();
             GenerateTerrain();
+            
             GetCharacter getCharacter = FindObjectOfType<GetCharacter>();
             if (getCharacter != null)
             {
@@ -69,7 +70,7 @@ public class terrainGeneration : MonoBehaviour
             else
             {
                 Debug.LogError("GetCharacter script not found in the scene!");
-            }
+            } 
         }
         
     }

@@ -8771,7 +8771,6 @@ GameObject:
   - component: {fileID: 1250731787}
   - component: {fileID: 1250731786}
   - component: {fileID: 1250731785}
-  - component: {fileID: 1250731784}
   m_Layer: 0
   m_Name: BP
   m_TagString: Untagged
@@ -8779,18 +8778,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1250731784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1250731783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a38a741124ff14fc49cdf6003a2dce51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1250731785
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14659,7 +14646,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2100277620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15589,7 +15576,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4407966152020087526}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79c7dde622395ef40892c307b9881cea, type: 3}
   m_Name: 
