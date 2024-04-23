@@ -80,7 +80,7 @@ public class terrainGeneration : MonoBehaviour
         PlayerScore playerScore = FindObjectOfType<PlayerScore>();
 
         // Ensure that playerScore is not null
-        if (playerScore != null)
+        /*if (playerScore != null)
         {
             // Now you can call the instance method SaveScoreJson() on the playerScore object
             playerScore.SaveScoreJson();
@@ -88,7 +88,7 @@ public class terrainGeneration : MonoBehaviour
         else
         {
             Debug.LogError("PlayerScore component not found.");
-        }
+        }*/
     }
 
     

@@ -7702,15 +7702,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-<<<<<<< HEAD
-  m_AnchoredPosition: {x: 35.059692, y: 8}
-  m_SizeDelta: {x: 221.9195, y: 199.8601}
-  m_Pivot: {x: 1, y: 1}
-=======
   m_AnchoredPosition: {x: -179, y: -114}
   m_SizeDelta: {x: 346.5348, y: 199.8601}
   m_Pivot: {x: 0.5, y: 0.5}
->>>>>>> Revert-Commitss
 --- !u!114 &1079497804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11215,7 +11209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1504055593
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11898,13 +11892,10 @@ RectTransform:
   - {fileID: 1228496845}
   - {fileID: 916606155}
   - {fileID: 1079497803}
-<<<<<<< HEAD
-  - {fileID: 1791217882}
-  - {fileID: 610161640}
-=======
   - {fileID: 342937276}
   - {fileID: 1504055593}
->>>>>>> Revert-Commitss
+  - {fileID: 610161640}
+  - {fileID: 1791217882}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -13056,10 +13047,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026a5ecf8b0475a40a94f42b59886916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2122282787}
-  scoringThreshold: 1
-  scoreIncrement: 10
+  playerTransform: {fileID: 0}
+  scoreMultiplier: 10
   scoreText: {fileID: 112475413}
+  userName: {fileID: 0}
 --- !u!114 &1791217884
 MonoBehaviour:
   m_ObjectHideFlags: 0
