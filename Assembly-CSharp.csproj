@@ -66,11 +66,13 @@
     <Compile Include="Assets\NameCharacter.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Manager\GraphicMenuManager.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Core\Option.cs" />
+    <Compile Include="Assets\Scripts\Some.cs" />
     <Compile Include="Assets\respawnScreen.cs" />
     <Compile Include="Assets\Scripts\ButtonPressScript.cs" />
     <Compile Include="Assets\terrainGeneration.cs" />
     <Compile Include="Assets\Scripts\DifficultySO.cs" />
     <Compile Include="Assets\Scripts\CameraZoom.cs" />
+    <Compile Include="Assets\Scripts\ScoreUi.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Options\QualityLevelOption.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
     <Compile Include="Assets\ApplyDifficulty.cs" />
@@ -100,12 +102,14 @@
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Core\XML\XmlManager.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\CharacterUpdate.cs" />
+    <Compile Include="Assets\Scripts\MusicManager.cs" />
     <Compile Include="Assets\Multiplayer-Chat-using-Netcode-for-Gameobjects-with-Unity-main\Scripts\ChatMessage.cs" />
     <Compile Include="Assets\Scripts\ToStore.cs" />
     <Compile Include="Assets\RevertHome.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Helpers\MenuToggler.cs" />
     <Compile Include="Assets\SaveSystem.cs" />
     <Compile Include="Assets\Scripts\SceneInfo.cs" />
+    <Compile Include="Assets\Scripts\GetCharacter.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Core\SubOption.cs" />
     <Compile Include="Assets\Scripts\Creatures\HostilePanda.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Core\GraphicSettingDataContainer.cs" />
@@ -122,12 +126,14 @@
     <Compile Include="Assets\Scripts\PasueMenu.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\SpriteDropdown.cs" />
+    <Compile Include="Assets\Scripts\AutoSave.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Scripts\Helpers\GraphicSettingHelperMethods.cs" />
     <Compile Include="Assets\Scripts\SelectionManager.cs" />
     <Compile Include="Assets\CamMovement.cs" />
     <Compile Include="Assets\Scripts\CharInfoText.cs" />
     <Compile Include="Assets\Scenes\SettingsUI\Demo\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CharacterChosen.cs" />
+    <Compile Include="Assets\Scripts\RowUi.cs" />
     <Compile Include="Assets\Scripts\SaveCharacter.cs" />
   </ItemGroup>
   <ItemGroup>
