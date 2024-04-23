@@ -32,6 +32,9 @@ public class HostilePanda : MonoBehaviour
     //animations
     public Animator animator;
 
+    [SerializeField] private AudioClip damageSound;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,6 +83,7 @@ public class HostilePanda : MonoBehaviour
 
     //allows the creature to take damage
     public void TakeDamage(int damage) {
+        AudioSource.PlayClipAtPoint(damageSound, transform.position, 1f);
         if (currentHealth - damage <= 0) {
             currentHealth = 0;
             healthBar.setHealth(0);

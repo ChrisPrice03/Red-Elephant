@@ -1,8 +1,8 @@
 using UnityEngine;
 using System;
 using System.IO;
-using System.Collections;
 using TMPro;
+using System;
 
 public class CharacterChosen : MonoBehaviour
 {
@@ -18,8 +18,13 @@ public class CharacterChosen : MonoBehaviour
     // Method to save character customization to JSON file
     public void SaveCharacterJson()
     {
+<<<<<<< HEAD
         // Define the folder path in the Documents directory
         string folderPath = Path.Combine(Application.persistentDataPath, "SavedGames", "NewGame", "Character");
+=======
+        // Define the folder path using Application.persistentDataPath
+        string folderPath = Path.Combine(Application.persistentDataPath, "SavedCharacters");
+>>>>>>> Revert-Commitss
 
         // Check if the folder exists, if not, create it
         if (!Directory.Exists(folderPath))
@@ -27,13 +32,18 @@ public class CharacterChosen : MonoBehaviour
             Directory.CreateDirectory(folderPath);
         }
 
+<<<<<<< HEAD
         // Create an instance of CharacterData
+=======
+        // Create an instance of CharactersData
+>>>>>>> Revert-Commitss
         CharactersData data = new CharactersData();
 
         // Get indices from the characterCreationMenu
         data.indices = characterCreationMenu.Indices();
 
         // Get the character name from the input field
+<<<<<<< HEAD
         string characterName = characterCreationMenu.characterNameInput.text;
 
         // Check if the character name is empty
@@ -45,6 +55,15 @@ public class CharacterChosen : MonoBehaviour
         else
         {
             data.userName = characterName; // Use the provided character name
+=======
+        if (characterCreationMenu.characterNameInput.text == "")
+        {
+            data.userName = "User_" + DateTime.Now.ToString("yyyyMMdd_HHmmss");
+        }
+        else
+        {
+            data.userName = characterCreationMenu.characterNameInput.text + "_" + DateTime.Now.ToString("yyyyMMdd_HHmmss");
+>>>>>>> Revert-Commitss
         }
 
         // Serialize data to JSON
