@@ -88,6 +88,7 @@ public class HostilePanda : MonoBehaviour
             currentHealth = 0;
             healthBar.setHealth(0);
             Die();
+            gameObject.tag="Died";
         }
         else {
             currentHealth -= damage;
