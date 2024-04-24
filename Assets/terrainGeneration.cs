@@ -11,6 +11,7 @@ public class terrainGeneration : MonoBehaviour
 
     public Sprite DungTP;
 
+
     public Loot loot_1;
     public Loot loot_2;
     public Loot loot_3;
@@ -111,6 +112,7 @@ public class terrainGeneration : MonoBehaviour
                     if (!worldTiles.Contains(new Vector2Int(x,y)) && x >= 0 && x <= worldSize && y >= 0 && y <= worldSize) {
                         int chestChance = Random.Range(0, 101);
                         int tPChance = Random.Range(0, 101);
+                        // int storeChance = Random.Range(0, 101);
                         if (y > height - 1) {
                             if (tPChance < 5) {
                                 if (tpPlace == false) {

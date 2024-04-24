@@ -6,20 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class ToStore : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] float levelLoadDelay = 1f;
-    void OnTriggerEnter2D(Collider2D other) 
-    {
-        SceneManager.LoadScene("TradingScene");
-        // StartCoroutine(LoadNextLevel());
+    public GameObject portal;
+    private GameObject player;
 
+    void Start() {
+        player = GameObject.FindGameObjectWithTag("Player");
     }
-
-    IEnumerator LoadNextLevel()
+    private void OnTriggerEnter2D(Collider2D other) 
     {
-        yield return new WaitForSecondsRealtime(levelLoadDelay);
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        // SceneManager.LoadScene(currentSceneIndex + 1);
-        SceneManager.LoadScene("TradingScene");
+        if (other.tag == "Player") {
+            other.transform.position = new Vector2(portal.transform.position.x, portal.transform.position.y);
+        }
+        
     }
 }

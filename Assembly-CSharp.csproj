@@ -98,12 +98,14 @@
     <Compile Include="Assets/Scripts/IsQuestComplete.cs" />
     <Compile Include="Assets/Scripts/PlayerName.cs" />
     <Compile Include="Assets/Scripts/Return.cs" />
+    <Compile Include="Assets/Scripts/UIManager.cs" />
     <Compile Include="Assets/LootBag.cs" />
     <Compile Include="Assets/Scenes/SettingsUI/Scripts/Manager/GraphicSettingSaveManager.cs" />
     <Compile Include="Assets/SaveData.cs" />
     <Compile Include="Assets/Scripts/ContinueButton.cs" />
     <Compile Include="Assets/Scenes/SettingsUI/Scripts/Core/XML/XmlManager.cs" />
     <Compile Include="Assets/Scripts/PlayerMovement.cs" />
+    <Compile Include="Assets/Shop.cs" />
     <Compile Include="Assets/Scripts/CharacterUpdate.cs" />
     <Compile Include="Assets/Scripts/MusicManager.cs" />
     <Compile Include="Assets/Multiplayer-Chat-using-Netcode-for-Gameobjects-with-Unity-main/Scripts/ChatMessage.cs" />
