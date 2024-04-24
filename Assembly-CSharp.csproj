@@ -68,6 +68,7 @@
     <Compile Include="Assets/Scenes/SettingsUI/Scripts/Manager/GraphicMenuManager.cs" />
     <Compile Include="Assets/Scenes/SettingsUI/Scripts/Core/Option.cs" />
     <Compile Include="Assets/Scripts/Some.cs" />
+    <Compile Include="Assets/Scripts/CamSwitch.cs" />
     <Compile Include="Assets/respawnScreen.cs" />
     <Compile Include="Assets/Scripts/ButtonPressScript.cs" />
     <Compile Include="Assets/terrainGeneration.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets/Scripts/CameraZoom.cs" />
     <Compile Include="Assets/Scripts/ScoreUi.cs" />
     <Compile Include="Assets/Scenes/SettingsUI/Scripts/Options/QualityLevelOption.cs" />
+    <Compile Include="Assets/Scripts/ToStory.cs" />
     <Compile Include="Assets/Scripts/Settings.cs" />
     <Compile Include="Assets/ApplyDifficulty.cs" />
     <Compile Include="Assets/Scenes/SettingsUI/Scripts/Core/KeyboardMouseInput.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="Assets/Scripts/Difficulty.cs" />
     <Compile Include="Assets/Scenes/SettingsUI/Demo/Scripts/CubeController.cs" />
     <Compile Include="Assets/Scripts/MainMenu.cs" />
+    <Compile Include="Assets/ChangeDifficulty.cs" />
     <Compile Include="Assets/Scripts/PlayerEmote.cs" />
     <Compile Include="Assets/Scripts/HealthBar.cs" />
     <Compile Include="Assets/Scripts/ScreenshotTaker.cs" />

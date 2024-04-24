@@ -41,7 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Audio.unity
     guid: b158988548d2f984996f08b311c00c14
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TradingScene.unity
     guid: e61b899fdbc0f47ae928960cadf087d8
   - enabled: 1
@@ -50,4 +50,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CharMoveTest.unity
     guid: 0d2cdc32b949543e5a53aaf396118b59
+  - enabled: 1
+    path: Assets/Scenes/StoryScene.unity
+    guid: 0ff377131d2804cc1a5a3dcefbae3089
   m_configObjects: {}

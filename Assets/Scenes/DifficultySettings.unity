@@ -177,6 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: TitleScreenScene
   pauseMenuUI: {fileID: 0}
+  canvas: {fileID: 0}
   GameisPaused: 0
   s1: TitleScreenScene
 --- !u!114 &71140453
@@ -226,6 +227,18 @@ MonoBehaviour:
       - m_Target: {fileID: 71140452}
         m_TargetAssemblyTypeName: ButtonPressScript, Assembly-CSharp
         m_MethodName: LoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 706465033}
+        m_TargetAssemblyTypeName: Difficulty, Assembly-CSharp
+        m_MethodName: Change
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -613,6 +626,7 @@ MonoBehaviour:
   - {fileID: 1605793541}
   defaultSprite: {fileID: 21300000, guid: b299fe8877a9140489898f54000392fe, type: 3}
   selectedSprite: {fileID: 21300000, guid: eedc83bdb219a49aba01fed0951f3999, type: 3}
+  selectedDifficulty: 0
   isComplete: 0
 --- !u!114 &706465034
 MonoBehaviour:

@@ -13,6 +13,11 @@ public class Difficulty : MonoBehaviour
     [SerializeField] Sprite defaultSprite;
     [SerializeField] Sprite selectedSprite;
 
+    public int selectedDifficulty;
+
+    private Player _player;
+
+    private HostilePanda _hostilePanda;
     public bool isComplete = false;
 
     // Start is called before the first frame update
@@ -33,18 +38,20 @@ public class Difficulty : MonoBehaviour
 
         Image buttonImage;
 
+        selectedDifficulty = index;
+
         if (index == 0) {
-            diffText.text = "Easy mode:\n Player's HP: 150%\n Enemy's HP: 100%\n Player's Initial Damage: 150%\n ENemy's Initial Damage: 100%";
+            diffText.text = "Easy mode:\n Player's HP: 150%\n Enemy's HP: 75%\n";
             buttonImage = answerButtons[index].GetComponent<Image>();
             buttonImage.sprite = selectedSprite;
         }
         else if (index == 1) {
-            diffText.text = "Normal mode:\n Player's HP: 100%\n Enemy's HP: 100%\n Player's Initial Damage: 100%\n ENemy's Initial Damage: 100%";
+            diffText.text = "Normal mode:\n Player's HP: 100%\n Enemy's HP: 100%\n ";
             buttonImage = answerButtons[index].GetComponent<Image>();
             buttonImage.sprite = selectedSprite;
         }
         else if (index == 2){
-            diffText.text = "Hard mode:\n Player's HP: 75%\n Enemy's HP: 100%\n Player's Initial Damage: 75%\n ENemy's Initial Damage: 100%";
+            diffText.text = "Hard mode:\n Player's HP: 75%\n Enemy's HP: 150%\n";
             buttonImage = answerButtons[index].GetComponent<Image>();
             buttonImage.sprite = selectedSprite;
         }
@@ -67,6 +74,33 @@ public class Difficulty : MonoBehaviour
         //     buttonImage.sprite = selectedSprite;
         // }
         // SetButtonState(false);
+    }
+
+    public void Change() {
+        if (selectedDifficulty == 0) {
+            _player.maxHp += 50;
+            _player.curHp += 50;
+            _hostilePanda.maxHealth -= 25;
+            _hostilePanda.currentHealth -= 25;
+            _player.healthBar.setMaxHealth(_player.maxHp);
+            _player.healthBar.setHealth(_player.curHp);
+        }
+        else if (selectedDifficulty == 1) {
+            _player.curHp += 0;
+            _player.healthBar.setMaxHealth(_player.maxHp);
+            _player.healthBar.setHealth(_player.curHp);
+        }
+        else if (selectedDifficulty == 2){
+            _player.maxHp -= 25;
+            _player.curHp -= 25;
+            _hostilePanda.maxHealth += 50;
+            _hostilePanda.currentHealth += 50;
+            _player.healthBar.setMaxHealth(_player.maxHp);
+            _player.healthBar.setHealth(_player.curHp);
+        }
+        else {
+            isComplete = true;
+        }
     }
 
     void NextPage() {
